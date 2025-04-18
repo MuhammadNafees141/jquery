@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Record</title>
+  <link rel="stylesheet" href="./src/output.css">
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg text-sm md:text-base">
+    <div class="text-center mb-6">
+      <h1 class="text-xl font-bold">Student Attendance Record</h1>
+        <p class="font-bold">April 2025</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+      <div>
+        <p class="font-bold">Student Name:</p>
+        <p class="font-medium">John Doe</p>
+      </div>
+      <div>
+        <p class="font-bold">Student ID:</p>
+        <p class="font-medium">11111</p>
+      </div>
+     
+    </div>
+    <h2 class="font-semibold text-lg mb-2">Monthly Attendance Details</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full border border-gray-500 text-sm text-center ">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border px-2 py-2 text-left">Date In</th>
+            <th class="border px-2 py-2 text-left">Time In</th>
+            <th class="border px-2 py-2 text-left">Time Out</th>
+            <th class="border px-2 py-2 text-left">Standard Hours</th>
+            <th class="border px-2 py-2 text-left">Actual Hours</th>
+            <th class="border px-2 py-2 text-left">Late Arrival</th>
+            <th class="border px-2 py-2 text-left">Early Departure</th>
+            <th class="border px-2 py-2 text-center">Remarks</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr class="border-t">
+            <td class="px-2 py-1">Sun, Oct 1</td>
+            <td class="px-2 py-1">08:00 PM</td>
+            <td class="px-2 py-1">10:00 PM</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1"></td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-2 py-1">Mon, Oct 2</td>
+            <td class="px-2 py-1">08:00 PM</td>
+            <td class="px-2 py-1">10:00 PM</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1">7.75</td>
+            <td class="px-2 py-1 text-red-500">00:15</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1"></td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-2 py-1">Tue, Oct 3</td>
+            <td class="px-2 py-1">08:00 PM</td>
+            <td class="px-2 py-1">10:00 PM</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1">7.5</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1 text-red-500">00:30</td>
+            <td class="px-2 py-1">Early departure approved</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-2 py-1">Wed, Oct 4</td>
+            <td class="px-2 py-1">08:00 PM</td>
+            <td class="px-2 py-1">10:00 PM</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1">8.25</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1"></td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-2 py-1">Thu, Oct 5</td>
+            <td class="px-2 py-1">08:00 PM</td>
+            <td class="px-2 py-1">10:00 PM</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1">7.75</td>
+            <td class="px-2 py-1 text-red-500">00:30</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1">Traffic delay</td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-2 py-1">Fri, Oct 6</td>
+            <td class="px-2 py-1">08:00 PM</td>
+            <td class="px-2 py-1">10:00 PM</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1"></td>
+          </tr>
+          <tr class="border-t">
+            <td class="px-2 py-1">Sat, Oct 7</td>
+            <td class="px-2 py-1">08:00 PM</td>
+            <td class="px-2 py-1">10:00 PM</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1">8</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1 text-red-500">00:00</td>
+            <td class="px-2 py-1"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-6">
+      <h2 class="font-semibold text-lg mb-2">Monthly Summary:</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <p class="text-gray-500">On-Time Days:</p>
+          <p class="text-lg font-semibold">5</p>
+        </div>
+        <div>
+          <p class="text-gray-500">Present Days:</p>
+          <p class="text-lg font-semibold">7</p>
+        </div>
+        <div>
+          <p class="text-gray-500">Early Departure Days:</p>
+          <p class="text-lg font-semibold">1</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 flex justify-between text-xs text-gray-500">
+      <p>Generated on 4/18/2025</p>
+      <p>Page 1 of 1</p>
+    </div>
+  </div>
+</body>
+</html>

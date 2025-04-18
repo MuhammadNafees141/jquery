@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <title>Notifications</title>
+  <link rel="stylesheet" href="./src/output.css">
+</head>
+<body class="p-6 font-sans bg-gray-50">
+    
+
+  <div class="bg-white max-w-4xl mx-auto">
+    <div class="show-notifi">
+        <header class="flex items-center justify-start space-x-4 text-white">
+            <!-- Notification Icon with Dot -->
+            <div class="relative">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+              <span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-600 ring-2 ring-white"></span>
+            </div>
+        
+            <!-- User Name -->
+            <span class="text-sm font-medium text-gray-800">John Doe</span>
+        
+            <!-- User Icon -->
+            <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4.992 4.992 0 0112 15c1.657 0 3.156.805 4.121 2.062M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+          </header>
+    </div>
+    <!-- Header -->
+    <div class="flex items-center justify-between pt-5 mb-6">
+      <h1 class="text-2xl font-semibold">Notifications</h1>
+      <div class="flex items-center space-x-4">
+        <span class="text-sm text-gray-500">2 unread</span>
+        <button class="bg-white border border-gray-300 px-3 py-1 text-sm rounded hover:bg-gray-100">
+          ✓ Mark all as read
+        </button>
+      </div>
+    </div>
+
+    <!-- Notification List -->
+    <div class="space-y-4">
+
+      <!-- Unread Notification -->
+      <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-lg flex justify-between">
+        <div>
+          <h2 class="font-medium text-indigo-700 flex items-center space-x-2">
+            <i class="fas fa-file-alt text-blue-500">
+            </i>
+            <span>Fee Payment Reminder</span>
+          </h2>
+          <p class="text-sm text-gray-700 mt-1">Your tuition fee for November 2023 is due on November 15th.</p>
+          <a href="#" class="text-xs text-indigo-600 mt-1 inline-block">Mark as read</a>
+        </div>
+        <div class="text-sm text-gray-500">Nov 5, 09:30 AM</div>
+      </div>
+
+      <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-lg flex justify-between">
+        <div>
+          <h2 class="font-medium text-green-700 flex items-center space-x-2">
+            <i class="fas fa-calendar-check text-green-500"></i>
+            <span>Leave Request Approved</span>
+          </h2>
+          <p class="text-sm text-gray-700 mt-1">Your leave request for November 20-24 has been approved.</p>
+          <a href="#" class="text-xs text-indigo-600 mt-1 inline-block">Mark as read</a>
+        </div>
+        <div class="text-sm text-gray-500">Nov 4, 02:15 PM</div>
+      </div>
+
+      <!-- Read Notifications -->
+      <div class="p-4 rounded-lg border border-gray-100 bg-white flex justify-between">
+        <div>
+          <h2 class="font-medium text-yellow-700 flex items-center space-x-2">
+            <i class="fas fa-exclamation-circle text-yellow-500"></i>
+            <span>Attendance Alert</span>
+          </h2>
+          <p class="text-sm text-gray-700 mt-1">You were marked late on November 3rd.</p>
+        </div>
+        <div class="text-sm text-gray-500">Nov 3, 04:45 PM</div>
+      </div>
+
+      <div class="p-4 rounded-lg border border-gray-100 bg-white flex justify-between">
+        <div>
+          <h2 class="font-medium text-red-700 flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M6.938 4.938a10 10 0 0114.124 14.124 10 10 0 01-14.124-14.124z" />
+            </svg>
+            <span>Fine Issued</span>
+          </h2>
+          <p class="text-sm text-gray-700 mt-1">A fine of $10.00 has been issued for late attendance on October 25th.</p>
+        </div>
+        <div class="text-sm text-gray-500">Oct 26, 10:20 AM</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
