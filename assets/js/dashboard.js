@@ -1,5 +1,4 @@
 
-
 const sidebar = document.getElementById('sidebar');
 const hamburger = document.getElementById('hamburger');
 
@@ -22,4 +21,25 @@ window.addEventListener('resize', function () {
     if (window.innerWidth >= 768) {
         sidebar.classList.remove('-translate-x-full');
     }
+});
+
+function toggleDropdown(id) {
+    const dropdown = document.getElementById(id);
+    dropdown.classList.toggle('hidden');
+}
+
+document.getElementById('cnic').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\D/g, '').slice(0, 13); // Digits only, max 13
+    let formatted = '';
+
+    if (value.length > 5) {
+        formatted = value.slice(0, 5) + '-' + value.slice(5, 12);
+        if (value.length > 12) {
+            formatted += '-' + value.slice(12);
+        }
+    } else {
+        formatted = value;
+    }
+
+    e.target.value = formatted;
 });
