@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attendance Record</title>
+  <link rel="stylesheet" href="./src/output.css">
+  <link rel="stylesheet" href="./assets/font-awesome/all.min.css">
+</head>
+
+<body class="bg-gray-100 ">
+  <div class="grid lg:grid-cols-12 md:grid-cols-12">
+    <div class="lg:col-span-3 md:col-span-4 sm:col-span-3">
+      <aside id="sidebar"
+        class="fixed z-40 top-0 left-0 w-64 h-full bg-white shadow-md transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+        <div class="p-4 text-gray-500 font-semibold uppercase border-b">Menu</div>
+        <nav class="p-4 flex flex-col gap-4">
+          <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-home"></i> Dashboard</a>
+          <div>
+            <div class="flex items-center gap-3 font-semibold text-gray-900">
+              <i class="fas fa-clipboard-check"></i> Attendance
+            </div>
+            <div class="ml-8 mt-1 flex flex-col gap-1 text-sm">
+              <a href="#" class="hover:text-blue-600">Mark Attendance</a>
+              <a href="#" class="hover:text-blue-600">Attendance Log</a>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-3 font-semibold text-gray-900">
+              <i class="fas fa-calendar-alt"></i> Leaves
+            </div>
+            <div class="ml-8 mt-1 flex flex-col gap-1 text-sm">
+              <a href="#" class="hover:text-blue-600">Apply Leave</a>
+              <a href="#" class="hover:text-blue-600">Leave Records</a>
+            </div>
+          </div>
+          <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-dollar-sign"></i> Fees</a>
+          <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-exclamation-circle"></i>
+            Fines</a>
+          <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-bell"></i> Notifications</a>
+        </nav>
+      </aside>
+
+      <main class="flex-1 md:ml-64 p-4 transition-all duration-300 ease-in-out">
+
+        <div class="md:hidden flex items-center justify-between mb-4">
+          <button id="hamburger" class="text-2xl text-gray-700"><i class="fa-solid fa-list-ul"></i></button>
+          <h1 class="text-xl font-bold">Dashboard</h1>
+        </div>
+        <script>
+          const sidebar = document.getElementById('sidebar');
+          const hamburger = document.getElementById('hamburger');
+
+          function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+          }
+
+          function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+          }
+
+          hamburger.addEventListener('click', function (event) {
+            event.stopPropagation();
+            openSidebar();
+          });
+
+          document.body.addEventListener('click', function (event) {
+            if (
+              window.innerWidth < 768 &&
+              !sidebar.contains(event.target) &&
+              !hamburger.contains(event.target)
+            ) {
+              closeSidebar();
+            }
+          });
+        </script>
+    </div>
+    <div class="lg:col-span-9 md:col-span-8 sm:col-span-9 ">
+      <div class="max-w-7xl px-6 lg:py-7 md:py-5 lg:mt-5">
+        <div class="flex justify-between items-center mb-6 bg-white p-5 rounded-lg sm:mt-0">
+          <h2 class="text-lg font-bold text-gray-800">Select a Date and Month</h2>
+          <form action="#">
+            <input type="date" class="flex-shrink-0 border rounded p-2 text-gray-700 min-w-[100px]">
+          </form>
+        </div>
+        <div class="bg-white shadow rounded-lg">
+          <div class="flex justify-between items-center px-6 py-4 border-b">
+            <h3 class="text-lg font-medium text-gray-900">Attendance Records</h3>
+            <button
+              class="flex items-center gap-2 bg-white border px-4 py-2 rounded-md cursor-pointer text-sm font-medium text-gray-700 hover:bg-gray-100">
+              <i class="fas fa-plus"></i>
+              Download Report
+            </button>
+          </div>
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Check In</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Check Out</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 text-sm text-gray-700">2023-11-01</td>
+                <td class="px-6 py-4">
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Present</span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-700">09:00 AM</td>
+                <td class="px-6 py-4 text-sm text-gray-700">05:00 PM</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-sm text-gray-700">2023-11-02</td>
+                <td class="px-6 py-4">
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Present</span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-700">08:55 AM</td>
+                <td class="px-6 py-4 text-sm text-gray-700">05:05 PM</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-sm text-gray-700">2023-11-03</td>
+                <td class="px-6 py-4">
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Present</span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-700">09:02 AM</td>
+                <td class="px-6 py-4 text-sm text-gray-700">04:58 PM</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-sm text-gray-700">2023-11-06</td>
+                <td class="px-6 py-4">
+                  <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Absent</span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-400">-</td>
+                <td class="px-6 py-4 text-sm text-gray-400">-</td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 text-sm text-gray-700">2023-11-07</td>
+                <td class="px-6 py-4">
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Present</span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-700">09:00 AM</td>
+                <td class="px-6 py-4 text-sm text-gray-700">05:00 PM</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
