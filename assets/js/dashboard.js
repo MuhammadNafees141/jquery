@@ -1,33 +1,4 @@
 
-const sidebar = document.getElementById('sidebar');
-const hamburger = document.getElementById('hamburger');
-
-
-hamburger.addEventListener('click', function (event) {
-    event.stopPropagation();
-    sidebar.classList.toggle('-translate-x-full');
-});
-document.addEventListener('click', function (event) {
-    if (
-        window.innerWidth < 768 &&
-        !sidebar.contains(event.target) &&
-        !hamburger.contains(event.target)
-    ) {
-        sidebar.classList.add('-translate-x-full');
-    }
-});
-
-window.addEventListener('resize', function () {
-    if (window.innerWidth >= 768) {
-        sidebar.classList.remove('-translate-x-full');
-    }
-});
-
-function toggleDropdown(id) {
-    const dropdown = document.getElementById(id);
-    dropdown.classList.toggle('hidden');
-}
-
 document.getElementById('cnic').addEventListener('input', function (e) {
     let value = e.target.value.replace(/\D/g, '').slice(0, 13); // Digits only, max 13
     let formatted = '';
@@ -42,4 +13,16 @@ document.getElementById('cnic').addEventListener('input', function (e) {
     }
 
     e.target.value = formatted;
+});
+
+const sidebar = document.getElementById("sidebar");
+const openSidebar = document.getElementById("openSidebar");
+const closeSidebar = document.getElementById("closeSidebar");
+
+openSidebar.addEventListener("click", () => {
+  sidebar.classList.remove("-translate-x-full");
+});
+
+closeSidebar.addEventListener("click", () => {
+  sidebar.classList.add("-translate-x-full");
 });
