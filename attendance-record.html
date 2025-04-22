@@ -48,33 +48,6 @@
           <button id="hamburger" class="text-2xl text-gray-700"><i class="fa-solid fa-list-ul"></i></button>
           <h1 class="text-xl font-bold">Dashboard</h1>
         </div>
-        <script>
-          const sidebar = document.getElementById('sidebar');
-          const hamburger = document.getElementById('hamburger');
-
-          function openSidebar() {
-            sidebar.classList.remove('-translate-x-full');
-          }
-
-          function closeSidebar() {
-            sidebar.classList.add('-translate-x-full');
-          }
-
-          hamburger.addEventListener('click', function (event) {
-            event.stopPropagation();
-            openSidebar();
-          });
-
-          document.body.addEventListener('click', function (event) {
-            if (
-              window.innerWidth < 768 &&
-              !sidebar.contains(event.target) &&
-              !hamburger.contains(event.target)
-            ) {
-              closeSidebar();
-            }
-          });
-        </script>
     </div>
     <div class="lg:col-span-9 md:col-span-8 sm:col-span-9 ">
       <div class="max-w-7xl px-6 lg:py-7 md:py-5 lg:mt-5">
@@ -151,5 +124,5 @@
   </div>
 
 </body>
-
+<script src="./assets/js/dashboard.js"></script>
 </html>

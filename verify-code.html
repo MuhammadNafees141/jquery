@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Code</title>
+  <link rel="stylesheet" href="./src/output.css">
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-blue-200 min-h-screen flex items-center justify-center px-4">
+
+  <div class="bg-white rounded-2xl shadow-lg w-full max-w-md">
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6 rounded-t-2xl">
+      <h2 class="text-2xl font-bold text-center">Verify Code</h2>
+      <p class="text-center mt-1 text-sm">Enter the code sent to your Email:</p>
+      <p class="text-center text-sm font-bold">xyz@gmail.com</p>
+    </div>
+    <div class="p-6 space-y-5">
+      <div>
+        <label for="code" class="block text-sm font-semibold text-gray-700 mb-1">Verification Code</label>
+        <div class="flex items-center border border-gray-300 rounded-md px-3 py-2 bg-white">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+               class="w-5 h-5 text-gray-400 mr-2" 
+               fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" 
+                  d="M15.232 5.232a3 3 0 114.243 4.243L10.5 18.5H7v-3.5l8.232-8.268z" />
+          </svg>
+          <input type="text" id="code" placeholder="Enter verification code" 
+                 class="w-full outline-none text-sm text-gray-700 placeholder-gray-400" />
+        </div>
+      </div>
+      <a href="./sign-in.html" class="text-blue-600 text-sm hover:underline inline-flex items-center mb-6 mt-0 font-bold">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to login
+      </a>
+
+      <!-- Verify Button -->
+      <button class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold py-2 rounded-md hover:opacity-90 transition-all">
+        Verify Code
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>
