@@ -1,4 +1,4 @@
- <!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,267 +6,291 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
   <link rel="stylesheet" href="./src/output.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/font-awesome/all.min.css">
 </head>
 
-<body class="bg-gray-50 min-h-screen flex">
+<body class="bg-gray-100 p-4 mx-5">
 
+  
 
-  <aside id="sidebar"
-    class="fixed z-40 top-0 left-0 w-64 h-full bg-white shadow-md transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
-    <div class="p-4 text-gray-500 font-semibold uppercase border-b">Menu</div>
-    <nav class="p-4 flex flex-col gap-4">
-      <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-home"></i> Dashboard</a>
-      <div>
-        <div class="flex items-center gap-3 font-semibold text-gray-900">
-          <i class="fas fa-clipboard-check"></i> Attendance
+  <div class="grid lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12 xl:grid-cols-12">
+    <div class="lg:col-span-3 md:col-span-4 sm:col-span-3 xl:col-span-3">
+      <aside id="sidebar"
+        class="fixed z-40 top-0 left-0 w-64 xl:w-80 md:w-64 h-full bg-gradient-to-b from-blue-600 to-blue-800 shadow-md text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-4 md:justify-center">
+          <h1 class="text-xl font-bold">AMS</h1>
+          <button id="closeSidebar" class="md:hidden">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        <div class="ml-8 mt-1 flex flex-col gap-1 text-sm">
-          <a href="#" class="hover:text-blue-600">Mark Attendance</a>
-          <a href="#" class="hover:text-blue-600">Attendance Log</a>
-        </div>
-      </div>
-      <div>
-        <div class="flex items-center gap-3 font-semibold text-gray-900">
-          <i class="fas fa-calendar-alt"></i> Leaves
-        </div>
-        <div class="ml-8 mt-1 flex flex-col gap-1 text-sm">
-          <a href="#" class="hover:text-blue-600">Apply Leave</a>
-          <a href="#" class="hover:text-blue-600">Leave Records</a>
-        </div>
-      </div>
-      <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-dollar-sign"></i> Fees</a>
-      <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-exclamation-circle"></i>
-        Fines</a>
-      <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-bell"></i> Notifications</a>
-    </nav>
-  </aside>
-
-
-  <main class="flex-1 md:ml-64 p-4 transition-all duration-300 ease-in-out">
-
-    <div class="md:hidden flex items-center justify-between mb-4">
-      <button id="hamburger" class="text-2xl text-gray-700">☰</button>
-      <h1 class="text-xl font-bold">Dashboard</h1>
-    </div>
-    <script>
-      const sidebar = document.getElementById('sidebar');
-      const hamburger = document.getElementById('hamburger');
-
-
-      hamburger.addEventListener('click', function (event) {
-        event.stopPropagation();
-        sidebar.classList.toggle('-translate-x-full');
-      });
-
-
-      document.addEventListener('click', function (event) {
-        if (
-          window.innerWidth < 768 &&
-          !sidebar.contains(event.target) &&
-          !hamburger.contains(event.target)
-        ) {
-          sidebar.classList.add('-translate-x-full');
-        }
-      });
-
-      window.addEventListener('resize', function () {
-        if (window.innerWidth >= 768) {
-          sidebar.classList.remove('-translate-x-full');
-        }
-      });
-    </script>
-
-
-    <section class="max-w-7xl mx-auto">
-      <h2 class="text-2xl font-bold mb-6 ">Dashboard</h2>
-
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div class="bg-white rounded-xl shadow p-4 text-center">
-          <img src="./assets/images/attendance.png" alt="Attendance" class="mx-auto mb-2 w-12 h-12" />
-          <div class="text-blue-600 text-sm font-medium">Attendance</div>
-          <div class="text-2xl font-bold text-blue-600">85%</div>
-        </div>
-        <div class="bg-white rounded-xl shadow p-4 text-center">
-          <img src="./assets/images/calendar.png" alt="Leave Balance" class="mx-auto mb-2 w-12 h-12" />
-          <div class="text-green-600 text-sm font-medium">Leave Balance</div>
-          <div class="text-2xl font-bold text-green-600">12 <span class="text-base font-normal">days</span></div>
-        </div>
-        <div class="bg-white rounded-xl shadow p-4 text-center">
-          <img src="./assets/images/fees.png" alt="Fees" class="mx-auto mb-2 w-12 h-12" />
-          <div class="text-orange-500 text-sm font-medium">Pending Fees</div>
-          <div class="text-2xl font-bold text-orange-500">$150</div>
-        </div>
-        <div class="bg-white rounded-xl shadow p-4 text-center">
-          <img src="./assets/images/fine.png" alt="Fines" class="mx-auto mb-2 w-12 h-12" />
-          <div class="text-red-500 text-sm font-medium">Active Fines</div>
-          <div class="text-2xl font-bold text-red-500">$25</div>
-        </div>
-      </div>
-
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div class="bg-white rounded-xl shadow p-4">
-          <h3 class="text-lg font-semibold mb-2">Attendance</h3>
-          <ul class="space-y-2">
-            <li class="flex justify-between">
-              <span>Mark today's attendance</span>
-              <a href="#" class="text-blue-600 font-medium">Go</a>
-            </li>
-            <li class="flex justify-between">
-              <span>View attendance log</span>
-              <a href="#" class="text-blue-600 font-medium">Go</a>
-            </li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-xl shadow p-4">
-          <h3 class="text-lg font-semibold mb-2">Leaves</h3>
-          <ul class="space-y-2">
-            <li class="flex justify-between">
-              <span>Apply for leave</span>
-              <a href="#" class="text-blue-600 font-medium">Go</a>
-            </li>
-            <li class="flex justify-between">
-              <span>View leave records</span>
-              <a href="#" class="text-blue-600 font-medium">Go</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-
-      <div class="bg-white rounded-xl shadow p-4">
-        <h3 class="text-lg font-semibold mb-4 ">Recent Activity</h3>
-        <ul class="space-y-4">
-          <li class="flex justify-between items-center">
-            <div class="flex items-center gap-2 text-gray-800">
-              <img src="./assets/images/tick.png" class="w-11" alt="">
-              Attendance marked for today
-            </div>
-            <span class="text-sm text-gray-500">Today at 9:00 AM</span>
-          </li>
-          <li class="flex justify-between items-center">
-            <div class="flex items-center gap-2 text-gray-800">
-              <img src="./assets/images/tick.png" class="w-11" alt="">
-              Leave request approved
-            </div>
-            <span class="text-sm text-gray-500">Yesterday at 2:30 PM</span>
-          </li>
-          <li class="flex justify-between items-center">
-            <div class="flex items-center gap-2 text-gray-800">
-              <img src="./assets/images/cross.png" class="w-12" alt="">
-              Fee payment reminder
-            </div>
-            <span class="text-sm text-gray-500 ">2 days ago</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-  </main>
-</body>
-
-</html>   -->
-
-
- 
-
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="./src/output.css" />
-    <link rel="stylesheet" href="./assets/font-awesome/all.min.css">
-  </head>
-  <body class="bg-gradient-to-r from-blue-100 to-blue-200 min-h-screen flex items-center justify-center px-4 ">
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div class="bg-gradient-to-r from-blue-600 to-blue-700 p-6">
-        <h2 class="text-white text-2xl font-bold text-center">Reset Password</h2>
-        <p class="text-blue-100 text-center mt-1 text-sm">
-          We'll send you a link to reset your password
-        </p>
-      </div>
-      
-        <div class="p-6">
-            <label class="block mb-2 font-medium text-gray-700" for="email">Email Address</label>
-            <div class="flex items-center border rounded-lg px-3 py-2 mb-4">
-                <i class="fa-solid fa-envelope"></i>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    class="w-full outline-none pl-2"
-                />
-            </div>
-        </div>
-        
-
-        <a href="#" class="text-blue-600 text-sm hover:underline inline-flex items-center mb-4">
-          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        <nav class="space-y-2 px-4 text-center">
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V12H9v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Dashboard
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M8 7V3M16 7V3M4 11h16M5 19h14" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Attendance
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M9 12h6M9 16h6M9 8h6M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Leaves
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M17 9V7a4 4 0 0 0-8 0v2m-4 0h16v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Fees
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M12 9v2m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Fines
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path
+                d="M15 17h5l-1.405-1.405M19 13V7a2 2 0 0 0-2-2h-4.586A2 2 0 0 0 11 4.586l-6.707 6.707A1 1 0 0 0 4 12v5a2 2 0 0 0 2 2h5.586a1 1 0 0 0 .707-.293L15 17z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Notifications
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M18 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM13.5 14H6a2 2 0 0 0-2 2v1h9.5m1.5 0h5m-2.5-2.5V19"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Add Student
+          </a>
+        </nav>
+      </aside>
+      <div class="md:ml-64 p-4">
+        <button id="openSidebar" class="md:hidden mb-4">
+          <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          Back to login
-        </a>
-
-        <button class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium py-2 rounded-lg hover:opacity-90 transition">
-          Send Reset Link
         </button>
       </div>
     </div>
-  </body>
-</html> -->
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reset Password Confirmation</title>
-    <link rel="stylesheet" href="./src/output.css" />
-  </head>
-  <body class="bg-gradient-to-r from-blue-100 to-blue-200 min-h-screen flex items-center justify-center px-4">
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-lg overflow-hidden text-center">
-     
-      <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
-        <h2 class="text-white text-2xl font-bold">Reset Password</h2>
-        <p class="text-blue-100 text-sm mt-1">We'll send you a link to reset your password</p>
-      </div>
-
-
-      <div class="p-6 space-y-4">
-        <div class="flex justify-center">
-          <div class="bg-green-100 rounded-full p-3">
-            <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
+    <div class="lg:col-span-9 md:col-span-8 sm:col-span-9 xl:col-span-9">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-6">
+          <h1 class="text-2xl font-bold">Dashboard</h1>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <img src="./assets/images/attendance.png" class="float-start h-12 w-12" alt="">
+            <p class="text-sm text-gray-500">Attendance</p>
+            <p class="text-2xl font-bold">85%</p>
+            <div class=" w-full mt-3">
+              <a href="#" class="text-blue-600 float-start  font-bold ">
+                <p class="">View Details</p>
+              </a>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <img src="./assets/images/present.png" class="float-start  h-12 w-12" alt="">
+            <p class="text-sm text-gray-500">Leave Balance</p>
+            <p class="text-2xl font-bold">12 days</p>
+            <div class=" w-full mt-3">
+              <a href="#" class="text-blue-600 float-start  font-bold ">
+                <p class="">View Details</p>
+              </a>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <img src="./assets/images/absent.png" class="float-start  h-12 w-12" alt="">
+            <p class="text-sm text-gray-500">Pending fees</p>
+            <p class="text-2xl font-bold">237</p>
+            <div class=" w-full mt-3">
+              <a href="#" class="text-blue-600 float-start  font-bold ">
+                <p class="">View Details</p>
+              </a>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow text-center">
+            <img src="./assets/images/notification.png" class="float-start  h-12 w-12" alt="">
+            <p class="text-sm text-gray-500">Notifications</p>
+            <p class="text-2xl font-bold">12</p>
+            <div class=" w-full mt-3">
+              <a href="#" class="text-blue-600 float-start  font-bold ">
+                <p class="">View Details</p>
+              </a>
+            </div>
           </div>
         </div>
 
-        <h3 class="text-lg font-semibold">Check your email</h3>
-        <p class="text-sm text-gray-600">
-          We've sent a password reset link to <br />
-          <span class="font-medium"> Please check your inbox.</span>
-        </p>
 
-        <a href="#" class="text-blue-600 hover:underline text-sm font-medium inline-flex items-center justify-center">
-          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to login
-        </a>
+
+        
+        <h2 class="text-xl font-semibold mb-4">Active Fines</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="bg-white p-4 rounded-lg shadow flex items-start space-x-3">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+              <p class="font-semibold">Attendance</p>
+              <p class="text-sm text-gray-500">Mark and view attendance records</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow flex items-start space-x-3">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <div>
+              <p class="font-semibold">Leaves</p>
+              <p class="text-sm text-gray-500">Apply and manage leave requests</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow flex items-start space-x-3">
+            <i class="fa-solid fa-credit-card"></i>
+            <div>
+              <p class="font-semibold">Fees</p>
+              <p class="text-sm text-gray-500">View and pay outstanding fees</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow flex items-start space-x-3">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+              <p class="font-semibold">Fines</p>
+              <p class="text-sm text-gray-500">View and pay applicable fines</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow flex items-start space-x-3">
+            <i class="fa-solid fa-bell"></i>
+            <div>
+              <p class="font-semibold">Notifications</p>
+              <p class="text-sm text-gray-500">View system alerts and updates</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow flex items-start space-x-3">
+            <i class="fa-solid fa-user-plus"></i>
+            <div>
+              <p class="font-semibold">Add Student</p>
+              <p class="text-sm text-gray-500">Register new students to the system</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4">Recent Activities</h2>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <div class="text-blue-500 bg-blue-100 p-2 rounded-full">
+
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 7V3M16 7V3M3 11h18M5 19h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium">Attendance Marked</p>
+                <p class="text-sm text-gray-500">You marked your attendance for today</p>
+                <p class="text-xs text-gray-400">2 hours ago</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="text-green-500 bg-green-100 p-2 rounded-full">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium">Leave Approved</p>
+                <p class="text-sm text-gray-500">Your leave request has been approved</p>
+                <p class="text-xs text-gray-400">Yesterday</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="text-purple-500 bg-purple-100 p-2 rounded-full">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3m0-6v6m6-6h2a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h2" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium">Fee Payment</p>
+                <p class="text-sm text-gray-500">You paid $500 for monthly fees</p>
+                <p class="text-xs text-gray-400">2 days ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-xl font-semibold mb-4">Important Notifications</h2>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <div class="text-red-500 bg-red-100 p-2 rounded-full">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 9v2m0 4h.01M4.93 4.93l14.14 14.14M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium">Fee Payment Due</p>
+                <p class="text-sm text-gray-500">Your monthly fee payment is due in 3 days. Please make the
+                  payment to avoid late fee charges.</p>
+                <a href="#" class="text-blue-600 text-sm font-medium">Pay Now</a>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="text-yellow-500 bg-yellow-100 p-2 rounded-full">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 8v4l3 3m6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium">Upcoming Holiday</p>
+                <p class="text-sm text-gray-500">The campus will remain closed on October 25th for the annual
+                  function. All classes will resume on October 26th.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="text-blue-500 bg-blue-100 p-2 rounded-full">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 7V3M16 7V3M3 11h18M5 19h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium">Exam Schedule Released</p>
+                <p class="text-sm text-gray-500">The end-semester examination schedule has been released. Please
+                  check your email for details.</p>
+                <a href="#" class="text-blue-600 text-sm font-medium">View Schedule</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+<script>
+  const openSidebar = document.getElementById('openSidebar');
+  const closeSidebar = document.getElementById('closeSidebar');
+  const sidebar = document.getElementById('sidebar');
+
+  openSidebar.addEventListener('click', () => {
+    sidebar.classList.remove('transform', '-translate-x-full');
+    sidebar.classList.add('transform', 'translate-x-0');
+  });
+
+  closeSidebar.addEventListener('click', () => {
+    sidebar.classList.add('transform', '-translate-x-full');
+    sidebar.classList.remove('transform', 'translate-x-0');
+  });
+</script>
 </html>
-
-
 
