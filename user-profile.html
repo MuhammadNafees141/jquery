@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mark Attendance</title>
+  <title>User Profile</title>
   <link rel="stylesheet" href="./src/output.css">
+  <link rel="stylesheet" href="./assets/font-awesome/all.min.css">
 </head>
 
 <body class="bg-gray-100">
@@ -42,7 +43,7 @@
       </div>
     </div>
   </nav>
-  <div class="grid lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12 xl:grid-cols-12">
+  <div class="grid lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12 xl:grid-cols-12 min-h-screen">
     <div class="lg:col-span-3 md:col-span-4 sm:col-span-3 xl:col-span-3">
       <aside id="sidebar"
         class="fixed z-40 top-0 left-0 xl:w-80 lg:w-72 md:w-60 h-full bg-gradient-to-b from-blue-600 to-blue-700 shadow-md text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
@@ -107,48 +108,116 @@
         </nav>
       </aside>
     </div>
-    <div class="lg:col-span-9 md:col-span-8 sm:col-span-9 xl:col-span-9">
-      <div class="p-3">
-        <div class="max-w-5x mx-auto">
-          <div class="bg-blue-600 text-white p-6 rounded-lg shadow-sm">
-            <h1 class="text-2xl font-bold">Mark Your Attendance</h1>
+    <div class="lg:col-span-9 sm:col-span-9 xl:col-span-9 md:col-span-8  space-y-6 mt-5">
+      <div class="relative bg-white rounded-lg shadow overflow-hidden">
+        <div class="h-32 bg-gradient-to-r from-blue-600 to-blue-800"></div>
+        <div class="p-6   gap-4">
+          <div class="-mt-20">
+            <div
+              class="w-28 h-28 bg-blue-100 rounded-full border-4 border-white flex items-center justify-center text-3xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-user h-12 w-12 text-blue-600">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <button class="absolute top-36 left-28  rounded-full bg-blue-600 p-1.5 text-white hover:bg-blue-700"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-camera h-4 w-4">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z">
+                </path>
+                <circle cx="12" cy="13" r="3"></circle>
+              </svg></button>
           </div>
           <div class="grid grid-cols-12">
-            <div class="col-span-12">
-              <form class="bg-white shadow-lg p-5 rounded-lg mt-8">
-                <div class="mt-10">
-                  <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
-                  <input type="date"
-                    class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                  <div>
-                    <label for="checkIn" class="block text-sm font-medium text-gray-700">Check In Time</label>
-                    <input type="time" id="checkIn"
-                      class="mt-2 block w-full rounded-md  border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                  </div>
-                  <div>
-                    <label for="checkOut" class="block text-sm font-medium text-gray-700">Check Out Time</label>
-                    <input type="time" id="checkOut"
-                      class="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                  </div>
-                </div>
-                <div class="mt-8">
-                  <label for="notes" class="block text-sm font-medium text-gray-700">Notes (Optional)</label>
-                  <textarea id="notes" rows="3"
-                    class=" block mt-2 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                    placeholder="Add any additional notes..."></textarea>
-                </div>
-                <div>
-                  <div>
-                    <button type="button"
-                      class="border bg-gray-300 p-2 px-5 rounded-lg mt-5 hover:bg-slate-400">Cancel</button>
-                    <button type="button"
-                      class="border bg-blue-500 text-white p-2 px-5 rounded-lg mt-5 hover:bg-blue-600">Save
-                      Attendance</button>
-                  </div>
-                </div>
-              </form>
+            <div class="col-span-12 md:col-span-10">
+              <div class="self-end">
+                <h2 class="text-xl font-bold">John Doe</h2>
+                <p class="text-gray-500">Student ID: AMS-2023-001</p>
+              </div>
+            </div>
+            <div class="col-span-12 md:col-span-2">
+              <div class="self-start">
+                <button
+                  class="border border-gray-300 px-4 py-2 rounded hover:bg-gray-100 text-sm flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-pencil -ml-1 mr-2 h-4 w-4">
+                    <path
+                      d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z">
+                    </path>
+                    <path d="m15 5 4 4"></path>
+                  </svg>Edit Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold border-b pb-2 mb-4 ">Personal Information</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 text-sm text-gray-700">
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Email</p>
+                <p>john.doe@example.com</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Phone</p>
+                <p>+92 300 1234567</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Date of Birth</p>
+                <p>1999-05-15</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Gender</p>
+                <p>Male</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2 sm:col-span-2">
+              <div>
+                <p class="font-medium">Address</p>
+                <p>123 Student Housing, University Road, Karachi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold border-b pb-2 mb-4">Emergency Contact</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 text-sm text-gray-700">
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Contact Person</p>
+                <p>Jane Doe</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Relation</p>
+                <p>Parent</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Contact Number</p>
+                <p>+92 300 7654321</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Gender</p>
+                <p>Male</p>
+              </div>
             </div>
           </div>
         </div>
