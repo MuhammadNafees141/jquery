@@ -6,206 +6,225 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile</title>
   <link rel="stylesheet" href="./src/output.css">
-  
   <link rel="stylesheet" href="./assets/font-awesome/all.min.css">
-
 </head>
 
-<body class="bg-blue-50">
-
-
-<div class="grid lg:grid-cols-12 min-h-screen">
-  <button onclick="toggleSidebar()" class="lg:hidden  p-2 text-black bg-white shadow fixed top-2 left-2 z-50 rounded">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </button>
-  <div id="sidebar"
-    class="lg:col-span-3 fixed lg:static top-0 left-0 h-full w-64 lg:w-auto bg-gradient-to-b from-blue-600 to-blue-800 text-white p-6 space-y-8 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
-    <div class="text-2xl font-bold">AMS</div>
-    <nav class="space-y-2 px-4">
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-blue-600 hover:bg-blue-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V12H9v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2z"
-            stroke-linecap="round" stroke-linejoin="round" />
+<body class="bg-gray-100">
+  <nav class="bg-white shadow px-4 py-3 flex justify-between items-center">
+    <div class="md:ml-64 relative top-2">
+      <button id="openSidebar" class="md:hidden mb-4">
+        <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        Dashboard
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path d="M8 7V3M16 7V3M4 11h16M5 19h14" stroke-linecap="round" stroke-linejoin="round" />
+      </button>
+    </div>
+    <div class="relative">
+      <input type="checkbox" id="dropdown-toggle" class="peer hidden">
+      <label for="dropdown-toggle"
+        class="flex items-center gap-2 cursor-pointer bg-blue-100 text-sm rounded-full px-3 py-1.5 hover:bg-blue-200">
+        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 0116 0H2z" />
         </svg>
-        Attendance
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path d="M9 12h6M9 16h6M9 8h6M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
-            stroke-linecap="round" stroke-linejoin="round" />
+        <span class="text-gray-700 font-medium">John Doe</span>
+        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
-        Leaves
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path d="M17 9V7a4 4 0 0 0-8 0v2m-4 0h16v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-        Fees
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path d="M12 9v2m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
-        Fines
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path
-            d="M15 17h5l-1.405-1.405M19 13V7a2 2 0 0 0-2-2h-4.586A2 2 0 0 0 11 4.586l-6.707 6.707A1 1 0 0 0 4 12v5a2 2 0 0 0 2 2h5.586a1 1 0 0 0 .707-.293L15 17z"
-            stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        Notifications
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path d="M18 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM13.5 14H6a2 2 0 0 0-2 2v1h9.5m1.5 0h5m-2.5-2.5V19"
-            stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        Add Student
-      </a>
-    </nav>
-  </div>
-  <div class="lg:col-span-9 p-6 space-y-6  ">
-    <div class="relative bg-white rounded-lg shadow overflow-hidden">
-      <div class="h-32 bg-gradient-to-r from-blue-600 to-blue-800"></div>
-      <div class="p-6   gap-4">
-        <div class="-mt-20">
-          <div class="w-28 h-28 bg-blue-100 rounded-full border-4 border-white flex items-center justify-center text-3xl">
-          </div>
-        </div>
-        <div class="grid grid-cols-12">
-          <div class="col-span-12 md:col-span-10">
-        <div class="self-end">
-          <h2 class="text-xl font-bold">John Doe</h2>
-          <p class="text-gray-500">Student ID: AMS-2023-001</p>
-        </div>
+      </label>
+      <div
+        class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20 border border-gray-100 hidden peer-checked:block">
+        <a href="./user-profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Your Profile</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settings</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+          <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M17 16l4-4m0 0l-4-4m4 4H7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Sign out
+        </a>
       </div>
-      <div class="col-span-12 md:col-span-2">
-        <div class="self-start">
-          <button class="border border-gray-300 px-4 py-2 rounded hover:bg-gray-100 text-sm flex items-center gap-1">
-             Edit Profile
+    </div>
+  </nav>
+  <div class="grid lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12 xl:grid-cols-12 min-h-screen">
+    <div class="lg:col-span-3 md:col-span-4 sm:col-span-3 xl:col-span-3">
+      <aside id="sidebar"
+        class="fixed z-40 top-0 left-0 xl:w-80 lg:w-72 md:w-60 h-full bg-gradient-to-b from-blue-600 to-blue-700 shadow-md text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-4 md:justify-center">
+          <h1 class="text-xl font-bold  ">AMS</h1>
+          <button id="closeSidebar" class="md:hidden">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
-      </div>
-      </div>
-      </div>
+        <nav class="space-y-2 px-4 text-center">
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V12H9v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Dashboard
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M8 7V3M16 7V3M4 11h16M5 19h14" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Attendance
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M9 12h6M9 16h6M9 8h6M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Leaves
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M17 9V7a4 4 0 0 0-8 0v2m-4 0h16v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Fees
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M12 9v2m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Fines
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path
+                d="M15 17h5l-1.405-1.405M19 13V7a2 2 0 0 0-2-2h-4.586A2 2 0 0 0 11 4.586l-6.707 6.707A1 1 0 0 0 4 12v5a2 2 0 0 0 2 2h5.586a1 1 0 0 0 .707-.293L15 17z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Notifications
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M18 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM13.5 14H6a2 2 0 0 0-2 2v1h9.5m1.5 0h5m-2.5-2.5V19"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Add Student
+          </a>
+        </nav>
+      </aside>
     </div>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-lg font-semibold border-b pb-2 mb-4">Personal Information</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 text-sm text-gray-700">
-          <div class="flex items-start gap-2">
-            <div>
-              <p class="font-medium">Email</p>
-              <p>john.doe@example.com</p>
+    <div class="lg:col-span-9 sm:col-span-9 xl:col-span-9 md:col-span-8  space-y-6 mt-5">
+      <div class="relative bg-white rounded-lg shadow overflow-hidden">
+        <div class="h-32 bg-gradient-to-r from-blue-600 to-blue-800"></div>
+        <div class="p-6   gap-4">
+          <div class="-mt-20">
+            <div
+              class="w-28 h-28 bg-blue-100 rounded-full border-4 border-white flex items-center justify-center text-3xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-user h-12 w-12 text-blue-600">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <button class="absolute top-36 left-28  rounded-full bg-blue-600 p-1.5 text-white hover:bg-blue-700"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-camera h-4 w-4">
+                <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z">
+                </path>
+                <circle cx="12" cy="13" r="3"></circle>
+              </svg></button>
+          </div>
+          <div class="grid grid-cols-12">
+            <div class="col-span-12 md:col-span-10">
+              <div class="self-end">
+                <h2 class="text-xl font-bold">John Doe</h2>
+                <p class="text-gray-500">Student ID: AMS-2023-001</p>
+              </div>
+            </div>
+            <div class="col-span-12 md:col-span-2">
+              <div class="self-start">
+                <button
+                  class="border border-gray-300 px-4 py-2 rounded hover:bg-gray-100 text-sm flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-pencil -ml-1 mr-2 h-4 w-4">
+                    <path
+                      d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z">
+                    </path>
+                    <path d="m15 5 4 4"></path>
+                  </svg>Edit Profile
+                </button>
+              </div>
             </div>
           </div>
-          <div class="flex items-start gap-2">
-            <div>
-              <p class="font-medium">Phone</p>
-              <p>+92 300 1234567</p>
-            </div>
-          </div>
-      
-          <div class="flex items-start gap-2">
-          
-            <div>
-              <p class="font-medium">Date of Birth</p>
-              <p>1999-05-15</p>
-            </div>
-          </div>
-      
-          <div class="flex items-start gap-2">
-           
-            <div>
-              <p class="font-medium">Gender</p>
-              <p>Male</p>
-            </div>
-          </div>
-      
-          <div class="flex items-start gap-2 sm:col-span-2">
-        
-            <div>
-              <p class="font-medium">Address</p>
-              <p>123 Student Housing, University Road, Karachi</p>
-            </div>
-          </div>
-      
         </div>
       </div>
-      
-
-      <!-- Academic Information -->
-      <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-lg font-semibold border-b pb-2 mb-4">Personal Information</h3>
-      
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 text-sm text-gray-700">
-      
-          <div class="flex items-start gap-2">
-            
-            <div>
-              <p class="font-medium">Contact Person</p>
-              <p>Jane Doe</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold border-b pb-2 mb-4 ">Personal Information</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 text-sm text-gray-700">
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Email</p>
+                <p>john.doe@example.com</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Phone</p>
+                <p>+92 300 1234567</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Date of Birth</p>
+                <p>1999-05-15</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Gender</p>
+                <p>Male</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2 sm:col-span-2">
+              <div>
+                <p class="font-medium">Address</p>
+                <p>123 Student Housing, University Road, Karachi</p>
+              </div>
             </div>
           </div>
-      
-          <div class="flex items-start gap-2">
-            
-            <div>
-              <p class="font-medium">Relation</p>
-              <p>Parent</p>
+        </div>
+        <div class="bg-white rounded-lg shadow p-6">
+          <h3 class="text-lg font-semibold border-b pb-2 mb-4">Emergency Contact</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 text-sm text-gray-700">
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Contact Person</p>
+                <p>Jane Doe</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Relation</p>
+                <p>Parent</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Contact Number</p>
+                <p>+92 300 7654321</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <div>
+                <p class="font-medium">Gender</p>
+                <p>Male</p>
+              </div>
             </div>
           </div>
-      
-          <div class="flex items-start gap-2">
-            
-            <div>
-              <p class="font-medium">Contact Number</p>
-              <p>+92 300 7654321</p>
-            </div>
-          </div>
-      
-          <div class="flex items-start gap-2">
-            
-            <div>
-              <p class="font-medium">Gender</p>
-              <p>Male</p>
-            </div>
-          </div>
-      
-         
-      
         </div>
       </div>
-
     </div>
-
   </div>
-
-
-  
-</div>
-
-<!-- JS for sidebar toggle -->
-<script>
-  function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('-translate-x-full');
-  }
-</script>
-
-
 </body>
+<script src="./assets/js/profile.js"></script>
+
 </html>
- 
-  
