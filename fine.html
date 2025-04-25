@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="src/output.css">
+  <title>Fine</title>
+</head>
+<body>
+  <div class="grid grid-cols-12 min-h-screen">
+    <div class="col-span-3 p-4">
+      <aside id="sidebar"
+        class="fixed z-40 top-0 left-0 w-64 xl:w-80 md:w-64 h-full bg-gradient-to-r from-blue-600 to-blue-700 shadow-md text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-4 md:justify-center">
+          <h1 class="text-xl font-bold">AMS</h1>
+          <button id="closeSidebar" class="md:hidden">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <nav class="space-y-2 px-4 text-center">
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V12H9v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Dashboard
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M8 7V3M16 7V3M4 11h16M5 19h14" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Attendance
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M9 12h6M9 16h6M9 8h6M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Leaves
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M17 9V7a4 4 0 0 0-8 0v2m-4 0h16v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Fees
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M12 9v2m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Fines
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path
+                d="M15 17h5l-1.405-1.405M19 13V7a2 2 0 0 0-2-2h-4.586A2 2 0 0 0 11 4.586l-6.707 6.707A1 1 0 0 0 4 12v5a2 2 0 0 0 2 2h5.586a1 1 0 0 0 .707-.293L15 17z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Notifications
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M18 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM13.5 14H6a2 2 0 0 0-2 2v1h9.5m1.5 0h5m-2.5-2.5V19"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Add Student
+          </a>
+        </nav>
+      </aside>
+    </div>
+    <div class="col-span-9 p-4">
+      <div class="min-h-screen p-6">
+        <div class="flex justify-around items-center mb-4">
+          <h1 class="text-2xl font-bold text-gray-800">Fines Management</h1>
+          <span class="bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full">
+            Student ID: AMS-2023-001
+          </span>
+        </div>
+        <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
+          <div class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded mb-4 flex items-center gap-2">
+            <i class="fa fa-exclamation-triangle text-red-600"></i>
+            <span class="font-semibold">Pending Fines</span>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
+              <div>
+                <h2 class="text-lg font-semibold text-gray-800">Late Fee Submission</h2>
+                <p class="text-sm text-gray-600">Fine for late submission of tuition fee for September 2023</p>
+                <div class="flex items-center gap-2 mt-2 text-sm">
+                  <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-xs font-medium">Pending</span>
+                  <span class="text-gray-500">Due: 2023-10-25</span>
+                </div>
+              </div>
+              <div class="text-right flex pt-3 gap-4">
+                <p class="text-lg font-semibold pt-3 text-gray-800">Rs. 000</p>
+              </div>
+            </div>
+      
+            <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
+              <div>
+                <h2 class="text-lg font-semibold text-gray-800">Library Book Delay</h2>
+                <p class="text-sm text-gray-600">Fine for returning library book "Data Structures" 15 days after due date
+                </p>
+                <div class="flex items-center gap-2 mt-2 text-sm">
+                  <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-xs font-medium">Pending</span>
+                  <span class="text-gray-500">Due: 2023-10-15</span>
+                </div>
+              </div>
+              <div class="text-right flex pt-3 gap-4">
+                <p class="text-lg font-semibold pt-3 text-gray-800">Rs. 000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
+          <div class="mb-4 flex items-center gap-2">
+            <i class="fa fa-check text-green-500"></i>
+            <h2>Payment History</h2>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
+              <div>
+                <h2 class="text-lg font-semibold text-gray-800">ID Card Replacement</h2>
+                <p class="text-sm text-gray-600">Fine for replacement of lost ID card</p>
+                <div class="flex items-center gap-2 mt-2 text-sm">
+                  <span class="bg-green-200 text-black px-2 py-0.5 rounded-full text-xs font-medium">Pending</span>
+                  <span class="text-gray-500">Due: 2023-09-05</span>
+                  <span class="text-gray-500">ID: FIN2023-09-001</span>
+                </div>
+              </div>
+              <div class="text-right pt-5">
+                <p class="text-lg font-semibold text-gray-800">Rs. 000</p>
+              </div>
+            </div>
+      
+            <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
+              <div>
+                <h2 class="text-lg font-semibold text-gray-800">Late Attendance</h2>
+                <p class="text-sm text-gray-600">Fine for being late to class 5 times in August</p>
+                <div class="flex items-center gap-2 mt-2 text-sm">
+                  <span class="bg-green-200 text-black px-2 py-0.5 rounded-full text-xs font-medium">Pending</span>
+                  <span class="text-gray-500">Due: 2023-08-20</span>
+                  <span class="text-gray-500">ID: FIN2023-08-002</span>
+                </div>
+              </div>
+              <div class="text-right pt-5">
+                <p class="text-lg font-semibold text-gray-800">Rs. 000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-1">
+          <h2 class="text-xl font-semibold p-4 border-b">Fees Summary</h2>
+          <div class="bg-white rounded-xl shadow p-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-red-50 p-4 rounded-lg flex items-center gap-4">
+                <div class="bg-red-500 text-white p-2 rounded">
+                  <i class="fa fa-exclamation-triangle"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">Total Pending Fines</p>
+                  <p class="text-lg font-semibold">Rs. 000,000</p>
+                </div>
+              </div>
+              <div class="bg-green-50 p-4 rounded-lg flex items-center gap-4">
+                <div class="bg-green-500 text-white p-2 rounded">
+                  <i class="fa fa-check-circle text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">Total Paid Fines</p>
+                  <p class="text-lg font-semibold">Rs. 000,000</p>
+                </div>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
+                <div class="bg-blue-500 text-white p-2 rounded">
+                  <i class="fa fa-credit-card text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-600">All Time Total</p>
+                  <p class="text-lg font-semibold">Rs.000,000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
+
+<!-- <div class="min-h-screen bg-gray-100 p-6">
+  <div class="flex justify-around items-center mb-4">
+    <h1 class="text-2xl font-bold text-gray-800">Fines Management</h1>
+    <span class="bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full">
+      Student ID: AMS-2023-001
+    </span>
+  </div>
+  <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
+    <div class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded mb-4 flex items-center gap-2">
+      <i class="fa fa-exclamation-triangle text-red-600"></i>
+      <span class="font-semibold">Pending Fines</span>
+    </div>
+    <div class="space-y-4">
+      <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-800">Late Fee Submission</h2>
+          <p class="text-sm text-gray-600">Fine for late submission of tuition fee for September 2023</p>
+          <div class="flex items-center gap-2 mt-2 text-sm">
+            <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-xs font-medium">Pending</span>
+            <span class="text-gray-500">Due: 2023-10-25</span>
+          </div>
+        </div>
+        <div class="text-right flex pt-3 gap-4">
+          <p class="text-lg font-semibold pt-3 text-gray-800">Rs. 000</p>
+        </div>
+      </div>
+
+      <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-800">Library Book Delay</h2>
+          <p class="text-sm text-gray-600">Fine for returning library book "Data Structures" 15 days after due date
+          </p>
+          <div class="flex items-center gap-2 mt-2 text-sm">
+            <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-xs font-medium">Pending</span>
+            <span class="text-gray-500">Due: 2023-10-15</span>
+          </div>
+        </div>
+        <div class="text-right flex pt-3 gap-4">
+          <p class="text-lg font-semibold pt-3 text-gray-800">Rs. 000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
+    <div class="mb-4 flex items-center gap-2">
+      <i class="fa fa-check text-green-500"></i>
+      <h2>Payment History</h2>
+    </div>
+    <div class="space-y-4">
+      <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-800">ID Card Replacement</h2>
+          <p class="text-sm text-gray-600">Fine for replacement of lost ID card</p>
+          <div class="flex items-center gap-2 mt-2 text-sm">
+            <span class="bg-green-200 text-black px-2 py-0.5 rounded-full text-xs font-medium">Pending</span>
+            <span class="text-gray-500">Due: 2023-09-05</span>
+            <span class="text-gray-500">ID: FIN2023-09-001</span>
+          </div>
+        </div>
+        <div class="text-right pt-5">
+          <p class="text-lg font-semibold text-gray-800">Rs. 000</p>
+        </div>
+      </div>
+
+      <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
+        <div>
+          <h2 class="text-lg font-semibold text-gray-800">Late Attendance</h2>
+          <p class="text-sm text-gray-600">Fine for being late to class 5 times in August</p>
+          <div class="flex items-center gap-2 mt-2 text-sm">
+            <span class="bg-green-200 text-black px-2 py-0.5 rounded-full text-xs font-medium">Pending</span>
+            <span class="text-gray-500">Due: 2023-08-20</span>
+            <span class="text-gray-500">ID: FIN2023-08-002</span>
+          </div>
+        </div>
+        <div class="text-right pt-5">
+          <p class="text-lg font-semibold text-gray-800">Rs. 000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-1">
+    <h2 class="text-xl font-semibold p-4 border-b">Fees Summary</h2>
+    <div class="bg-white rounded-xl shadow p-4">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-red-50 p-4 rounded-lg flex items-center gap-4">
+          <div class="bg-red-500 text-white p-2 rounded">
+            <i class="fa fa-exclamation-triangle"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600">Total Pending Fines</p>
+            <p class="text-lg font-semibold">Rs. 000,000</p>
+          </div>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg flex items-center gap-4">
+          <div class="bg-green-500 text-white p-2 rounded">
+            <i class="fa fa-check-circle text-xl"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600">Total Paid Fines</p>
+            <p class="text-lg font-semibold">Rs. 000,000</p>
+          </div>
+        </div>
+        <div class="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
+          <div class="bg-blue-500 text-white p-2 rounded">
+            <i class="fa fa-credit-card text-xl"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600">All Time Total</p>
+            <p class="text-lg font-semibold">Rs.000,000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
