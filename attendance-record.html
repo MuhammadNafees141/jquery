@@ -6,123 +6,612 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Attendance Record</title>
   <link rel="stylesheet" href="./src/output.css">
-  <link rel="stylesheet" href="./assets/font-awesome/all.min.css">
 </head>
 
-<body class="bg-gray-100 ">
-  <div class="grid lg:grid-cols-12 md:grid-cols-12">
-    <div class="lg:col-span-3 md:col-span-4 sm:col-span-3">
-      <aside id="sidebar"
-        class="fixed z-40 top-0 left-0 w-64 h-full bg-white shadow-md transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
-        <div class="p-4 text-gray-500 font-semibold uppercase border-b">Menu</div>
-        <nav class="p-4 flex flex-col gap-4">
-          <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-home"></i> Dashboard</a>
-          <div>
-            <div class="flex items-center gap-3 font-semibold text-gray-900">
-              <i class="fas fa-clipboard-check"></i> Attendance
-            </div>
-            <div class="ml-8 mt-1 flex flex-col gap-1 text-sm">
-              <a href="#" class="hover:text-blue-600">Mark Attendance</a>
-              <a href="#" class="hover:text-blue-600">Attendance Log</a>
-            </div>
-          </div>
-          <div>
-            <div class="flex items-center gap-3 font-semibold text-gray-900">
-              <i class="fas fa-calendar-alt"></i> Leaves
-            </div>
-            <div class="ml-8 mt-1 flex flex-col gap-1 text-sm">
-              <a href="#" class="hover:text-blue-600">Apply Leave</a>
-              <a href="#" class="hover:text-blue-600">Leave Records</a>
-            </div>
-          </div>
-          <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-dollar-sign"></i> Fees</a>
-          <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-exclamation-circle"></i>
-            Fines</a>
-          <a href="#" class="flex items-center gap-3 hover:text-blue-600"><i class="fas fa-bell"></i> Notifications</a>
-        </nav>
-      </aside>
-
-      <main class="flex-1 md:ml-64 p-4 transition-all duration-300 ease-in-out">
-
-        <div class="md:hidden flex items-center justify-between mb-4">
-          <button id="hamburger" class="text-2xl text-gray-700"><i class="fa-solid fa-list-ul"></i></button>
-          <h1 class="text-xl font-bold">Dashboard</h1>
-        </div>
+<body class="bg-gray-100">
+  <input type="checkbox" id="signout-modal-toggle" class="hidden peer" />
+  <nav class="bg-white shadow px-4 py-3 flex justify-between items-center">
+    <div class="md:ml-64 relative top-2">
+      <button id="openSidebar" class="md:hidden mb-4">
+        <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
-    <div class="lg:col-span-9 md:col-span-8 sm:col-span-9 ">
-      <div class="max-w-7xl px-6 lg:py-7 md:py-5 lg:mt-5">
-        <div class="flex justify-between items-center mb-6 bg-white p-5 rounded-lg sm:mt-0">
-          <h2 class="text-lg font-bold text-gray-800">Select a Date and Month</h2>
-          <form action="#">
-            <input type="date" class="flex-shrink-0 border rounded p-2 text-gray-700 min-w-[100px]">
-          </form>
+    <div class="relative">
+      <input type="checkbox" id="dropdown-toggle" class="peer hidden">
+      <label for="dropdown-toggle"
+        class="flex items-center gap-2 cursor-pointer bg-blue-100 text-sm rounded-full px-3 py-1.5 hover:bg-blue-200">
+        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 0116 0H2z" />
+        </svg>
+        <span class="text-gray-700 font-semibold">User</span>
+        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </label>
+      <div
+        class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20 border border-gray-100 hidden peer-checked:block">
+        <a href="./user-profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Your Profile</a>
+        <a href="./forgot-password.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Change Password</a>
+        <label for="signout-modal-toggle"
+          class="px-3 py-2 text-red-600 hover:bg-gray-100 flex items-center gap-1 cursor-pointer">
+          <svg class="w-6 h-6 " fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Sign out
+        </label>
+      </div>
+    </div>
+  </nav>
+  <div class="fixed inset-0 z-50 hidden peer-checked:flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-xl max-w-sm w-full mx-4 p-6">
+      <h2 class="text-lg font-semibold text-gray-800 mb-4">Confirm Sign Out</h2>
+      <p class="text-gray-600 mb-6">Are you sure you want to sign out?</p>
+      <div class="flex justify-end gap-3">
+        <label for="signout-modal-toggle"
+          class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 cursor-pointer">Cancel</label>
+        <a href="./sign-in.html" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-900">Sign
+          Out</a>
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-12">
+    <div class="md:block md:col-span-4 lg:col-span-3">
+      <aside id="sidebar"
+      class="fixed z-40 top-0 left-0 w-64 xl:w-80 md:w-64 h-full bg-gradient-to-b from-blue-700 to-blue-800 shadow-md text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+      <div class="flex items-center justify-between p-4 md:justify-center">
+        <h1 class="text-xl font-bold">AMS</h1>
+        <button id="closeSidebar" class="md:hidden">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <nav class="space-y-2 px-4 text-center">
+        <a href="./dashboard.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M3 10l9-7 9 7v8a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4H9v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8z"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Dashboard
+        </a>
+        <div class="relative">
+          <button onclick="toggleDropdown('attendanceDropdown')"
+            class="flex items-center justify-between w-full gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path
+                  d="M8 7V3m8 4V3m-9 8h10m-12 8h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Attendance
+            </div>
+            <svg class="w-4 h-4 transition-transform" id="attendanceIcon" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" stroke-width="2">
+              <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div id="attendanceDropdown" class="hidden flex-col mt-2 bg-blue-800">
+            <a href="./mark-attendence.html" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Mark
+              Attendance</a>
+            <a href="./attendance-record.html" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Attendance
+              Record</a>
+          </div>
         </div>
-        <div class="bg-white shadow rounded-lg">
-          <div class="flex justify-between items-center px-6 py-4 border-b">
-            <h3 class="text-lg font-medium text-gray-900">Attendance Records</h3>
+        <div class="relative">
+          <button onclick="toggleDropdown('leavesDropdown')"
+            class="flex items-center justify-between w-full gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path
+                  d="M9 5h6a2 2 0 0 1 2 2v0a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2v0a2 2 0 0 1 2-2z"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 14h6m-6-4h6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Leaves
+            </div>
+            <svg class="w-4 h-4 transition-transform" id="leavesIcon" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" stroke-width="2">
+              <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div id="leavesDropdown" class="hidden flex-col mt-2 bg-blue-800">
+            <a href="#" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Apply for
+              Leave</a>
+            <a href="#" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Leave
+              Record</a>
+          </div>
+        </div>
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M2 7h20M2 10h20M4 17h4m6 0h6a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Fees
+        </a>
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path
+              d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Fines
+        </a>
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path
+              d="M15 17h5l-1.41-1.41A2 2 0 0 1 18 14.16V11a6 6 0 0 0-5-5.92V4a2 2 0 1 0-4 0v1.08A6 6 0 0 0 4 11v3.16c0 .54-.22 1.06-.59 1.44L2 17h5m5 0v1a3 3 0 1 1-6 0v-1h6z"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Notifications
+        </a>
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Add Student
+        </a>
+      </nav>
+    </aside>
+    </div>
+    <div class="col-span-1 md:col-span-8 lg:col-span-9">
+      <main class=" transition-all duration-300 p-4">
+        <div class="mb-4">
+          <div class="flex justify-end">
             <button
-              class="flex items-center gap-2 bg-white border px-4 py-2 rounded-md cursor-pointer text-sm font-medium text-gray-700 hover:bg-gray-100">
-              <i class="fas fa-plus"></i>
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm shadow flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7 10l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 4v12" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
               Download Report
             </button>
           </div>
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-100">
-              <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Check In</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Check Out</th>
+        </div>
+        <div class="flex justify-between items-center mb-6 bg-blue-700 p-5 rounded-lg sm:mt-0">
+          <h2 class="text-lg font-bold text-white">Select a Date and Month</h2>
+          <form action="#">
+            <input type="date" name="select-date" id="select-date"
+              class="flex-shrink-0 border rounded p-2 text-gray-700">
+          </form>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white rounded-xl shadow-lg border border-gray-300 overflow-auto text-center">
+            <thead>
+              <tr class="bg-gray-300 text-gray-700 text-sm border-b border-gray-300">
+                <th class="py-3 px-4 text-center border-r border-gray-300">Date</th>
+                <th class="py-3 px-4 text-center border-r border-gray-300">Day</th>
+                <th class="py-3 px-4 text-center border-r border-gray-300">Status</th>
+                <th class="py-3 px-4 text-center border-r border-gray-300">Time In</th>
+                <th class="py-3 px-4 text-center border-r border-gray-300">Time Out</th>
+                <th class="py-3 px-4 text-center">Working Hours</th>
               </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-              <tr>
-                <td class="px-6 py-4 text-sm text-gray-700">2023-11-01</td>
-                <td class="px-6 py-4">
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Present</span>
+            <tbody class="text-gray-600 text-sm">
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2025-05-01</td>
+                <td class="py-3 px-4">Monday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded-full">Work
+                    from Home</span>
                 </td>
-                <td class="px-6 py-4 text-sm text-gray-700">09:00 AM</td>
-                <td class="px-6 py-4 text-sm text-gray-700">05:00 PM</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
               </tr>
-              <tr>
-                <td class="px-6 py-4 text-sm text-gray-700">2023-11-02</td>
-                <td class="px-6 py-4">
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Present</span>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-03</td>
+                <td class="py-3 px-4">Wednesday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    Present
+                  </span>
                 </td>
-                <td class="px-6 py-4 text-sm text-gray-700">08:55 AM</td>
-                <td class="px-6 py-4 text-sm text-gray-700">05:05 PM</td>
+                <td class="py-3 px-4">09:00 AM</td>
+                <td class="py-3 px-4">05:00 PM</td>
+                <td class="py-3 px-4">8h</td>
               </tr>
-              <tr>
-                <td class="px-6 py-4 text-sm text-gray-700">2023-11-03</td>
-                <td class="px-6 py-4">
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Present</span>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                <td class="py-3 px-4">Thursday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Present
+                  </span>
                 </td>
-                <td class="px-6 py-4 text-sm text-gray-700">09:02 AM</td>
-                <td class="px-6 py-4 text-sm text-gray-700">04:58 PM</td>
+                <td class="py-3 px-4">08:00 PM</td>
+                <td class="py-3 px-4">10:00 PM</td>
+                <td class="py-3 px-4">2h</td>
               </tr>
-              <tr>
-                <td class="px-6 py-4 text-sm text-gray-700">2023-11-06</td>
-                <td class="px-6 py-4">
-                  <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Absent</span>
+
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                <td class="py-3 px-4">Friday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Present
+                  </span>
                 </td>
-                <td class="px-6 py-4 text-sm text-gray-400">-</td>
-                <td class="px-6 py-4 text-sm text-gray-400">-</td>
+                <td class="py-3 px-4">08:00 pm</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
               </tr>
-              <tr>
-                <td class="px-6 py-4 text-sm text-gray-700">2023-11-07</td>
-                <td class="px-6 py-4">
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Present</span>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-05</td>
+                <td class="py-3 px-4">Saturday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Absent
+                  </span>
                 </td>
-                <td class="px-6 py-4 text-sm text-gray-700">09:00 AM</td>
-                <td class="px-6 py-4 text-sm text-gray-700">05:00 PM</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-02</td>
+                <td class="py-3 px-4">Sunday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center bg-gray-200 text-gray-700 text-xs font-medium px-2 py-1 rounded-full">Off</span>
+
+                </td>
+                <td class="py-3 px-4">09:00 AM</td>
+                <td class="py-3 px-4">05:00 PM</td>
+                <td class="py-3 px-4">8h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2025-05-01</td>
+                <td class="py-3 px-4">Monday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded-full">Work
+                    from Home</span>
+                </td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-03</td>
+                <td class="py-3 px-4">Wednesday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">09:00 AM</td>
+                <td class="py-3 px-4">05:00 PM</td>
+                <td class="py-3 px-4">8h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                <td class="py-3 px-4">Thursday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">08:00 PM</td>
+                <td class="py-3 px-4">10:00 PM</td>
+                <td class="py-3 px-4">2h</td>
+              </tr>
+
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                <td class="py-3 px-4">Friday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">08:00 pm</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-05</td>
+                <td class="py-3 px-4">Saturday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Absent
+                  </span>
+                </td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-02</td>
+                <td class="py-3 px-4">Sunday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center bg-gray-200 text-gray-700 text-xs font-medium px-2 py-1 rounded-full">Off</span>
+
+                </td>
+                <td class="py-3 px-4">09:00 AM</td>
+                <td class="py-3 px-4">05:00 PM</td>
+                <td class="py-3 px-4">8h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2025-05-01</td>
+                <td class="py-3 px-4">Monday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded-full">Work
+                    from Home</span>
+                </td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-03</td>
+                <td class="py-3 px-4">Wednesday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">09:00 AM</td>
+                <td class="py-3 px-4">05:00 PM</td>
+                <td class="py-3 px-4">8h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                <td class="py-3 px-4">Thursday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">08:00 PM</td>
+                <td class="py-3 px-4">10:00 PM</td>
+                <td class="py-3 px-4">2h</td>
+              </tr>
+
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                <td class="py-3 px-4">Friday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">08:00 pm</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-05</td>
+                <td class="py-3 px-4">Saturday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Absent
+                  </span>
+                </td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-02</td>
+                <td class="py-3 px-4">Sunday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center bg-gray-200 text-gray-700 text-xs font-medium px-2 py-1 rounded-full">Off</span>
+
+                </td>
+                <td class="py-3 px-4">09:00 AM</td>
+                <td class="py-3 px-4">05:00 PM</td>
+                <td class="py-3 px-4">8h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2025-05-01</td>
+                <td class="py-3 px-4">Monday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded-full">Work
+                    from Home</span>
+                </td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-03</td>
+                <td class="py-3 px-4">Wednesday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">09:00 AM</td>
+                <td class="py-3 px-4">05:00 PM</td>
+                <td class="py-3 px-4">8h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                <td class="py-3 px-4">Thursday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">08:00 PM</td>
+                <td class="py-3 px-4">10:00 PM</td>
+                <td class="py-3 px-4">2h</td>
+              </tr>
+
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                <td class="py-3 px-4">Friday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Present
+                  </span>
+                </td>
+                <td class="py-3 px-4">08:00 pm</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-05</td>
+                <td class="py-3 px-4">Saturday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center gap-1 bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full">
+                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" stroke-width="2"
+                      viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Absent
+                  </span>
+                </td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">-</td>
+                <td class="py-3 px-4">0h</td>
+              </tr>
+              <tr class="border-b border-gray-200">
+                <td class="py-3 px-4 font-semibold">2023-10-02</td>
+                <td class="py-3 px-4">Sunday</td>
+                <td class="py-3 px-4">
+                  <span
+                    class="inline-flex items-center bg-gray-200 text-gray-700 text-xs font-medium px-2 py-1 rounded-full">Off</span>
+
+                </td>
+                <td class="py-3 px-4">09:00 AM</td>
+                <td class="py-3 px-4">05:00 PM</td>
+                <td class="py-3 px-4">8h</td>
               </tr>
             </tbody>
           </table>
         </div>
+      </main>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 bg-gray-100 p-4">
+        <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+          <div>
+            <h2 class="text-gray-600 text-sm font-semibold">Presents</h2>
+            <p class="text-2xl font-bold text-gray-900 mt-2">18</p>
+          </div>
+          <div class="flex items-center justify-center w-12 h-12 bg-green-100 rounded-full">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+          <div>
+            <h2 class="text-gray-600 text-sm font-semibold">Absents</h2>
+            <p class="text-2xl font-bold text-gray-900 mt-2">2</p>
+          </div>
+          <div class="flex items-center justify-center w-12 h-12 bg-red-100 rounded-full">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+          <div>
+            <h2 class="text-gray-600 text-sm font-semibold">Late</h2>
+            <p class="text-2xl font-bold text-gray-900 mt-2">2</p>
+          </div>
+          <div class="flex items-center justify-center w-12 h-12 bg-yellow-100 rounded-full">
+            <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </body>
+
+
 <script src="./assets/js/dashboard.js"></script>
+
 </html>
