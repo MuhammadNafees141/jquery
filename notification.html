@@ -11,8 +11,6 @@
 
 <body class="bg-gray-100">
   <input type="checkbox" id="signout-modal-toggle" class="hidden peer" />
-  
-  
   <nav class="bg-white shadow px-4 py-3 flex justify-between items-center">
     <div class="md:ml-64 relative top-2">
       <button id="openSidebar" class="md:hidden mb-4">
@@ -61,8 +59,6 @@
       </div>
     </div>
   </div>
-
-
   <aside id="sidebar"
     class="fixed z-40 top-0 left-0 w-64 xl:w-80 md:w-64 h-full bg-gradient-to-b from-blue-700 to-blue-800 shadow-md text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
     <div class="flex items-center justify-between p-4 md:justify-center">
@@ -81,7 +77,6 @@
         </svg>
         Dashboard
       </a>
-  
       <div class="relative">
         <button onclick="toggleDropdown('attendanceDropdown')"
           class="flex items-center justify-between w-full gap-3 p-3 rounded-lg hover:bg-blue-500">
@@ -104,9 +99,7 @@
           <a href="./attendance-record.html"
             class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Attendance Record</a>
         </div>
-      </div>
-
-     
+      </div>     
       <div class="relative">
         <button onclick="toggleDropdown('leavesDropdown')"
           class="flex items-center justify-between w-full gap-3 p-3 rounded-lg hover:bg-blue-500">
@@ -129,8 +122,6 @@
           <a href="#" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Leave Record</a>
         </div>
       </div>
-
-      
       <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
           <path d="M2 7h20M2 10h20M4 17h4m6 0h6a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"
@@ -162,21 +153,10 @@
       </a>
     </nav>
   </aside>
-
- 
   <main class="md:ml-64 xl:ml-80 p-6">
-    <!-- <header class="flex justify-between items-center mb-6">
-      <h2 class="text-xl font-semibold">All Notifications</h2>
-      <div class="space-x-2">
-        <button class="bg-gray-200 px-3 py-1 rounded">Mark all read</button>
-        <button class="bg-red-100 px-3 py-1 rounded">Clear all</button>
-      </div>
-    </header> -->
     <section class="space-y-4">
-
       <div class="bg-white shadow-md p-4 rounded-lg ">
        <header class="flex justify-between items-center mb-6">
-         
         <h2 class="text-xl font-semibold">All Notifications</h2>
         <div class="space-x-2 float-end ">
           <button class="bg-gray-200 px-3 py-1 rounded ">Mark all read</button>
@@ -184,11 +164,7 @@
         </div>
       </header>
       </div>
-
       <div class="bg-white shadow-md p-4 rounded-lg ">
-        
-
-        
         <h3 class="text-lg font-semibold text-yellow-600">Fee Payment Due</h3>
         <p class="text-sm text-gray-600">Your monthly fee payment is due in 3 days. Please make the payment to avoid late fee charges.</p>
         <div class="text-xs text-gray-500 mt-2 flex justify-between">
@@ -197,7 +173,6 @@
         </div>
         <a href="#" class="text-blue-600 text-sm mt-2 inline-block">View Details</a>
       </div>
-
       <div class="bg-white shadow-md p-4 rounded-lg ">
         <h3 class="text-lg font-semibold text-red-600">Attendance Alert</h3>
         <p class="text-sm text-gray-600">Your attendance has fallen below 75%. Please ensure regular attendance to meet the minimum requirement.</p>
@@ -207,7 +182,6 @@
         </div>
         <a href="#" class="text-blue-600 text-sm mt-2 inline-block">View Details</a>
       </div>
-
       <div class="bg-white shadow-md p-4 rounded-lg ">
         <h3 class="text-lg font-semibold text-red-600">Fine Imposed</h3>
         <p class="text-sm text-gray-600">Fine Imposed
@@ -232,11 +206,8 @@
           <span>2023-10-10</span>
           <span>02:30 PM</span>
         </div>
-
-        
     </section>
   </main>
-
   <script src="./assets/js/dashboard.js"></script>
 </body>
 
