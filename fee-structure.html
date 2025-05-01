@@ -8,41 +8,138 @@
   <title>Fees</title>
 </head>
 <body class="bg-gray-100 min-h-screen w-full">
-  <aside
-    class="fixed z-40 top-0 left-0 h-full w-64 xl:w-80 bg-gradient-to-r from-blue-600 to-blue-700 shadow-md text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out"
-    id="sidebar">
-    <div class="flex items-center justify-between p-4 md:justify-center">
-      <h1 class="text-xl font-bold">AMS</h1>
-      <button id="closeSidebar" class="md:hidden">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+  <input type="checkbox" id="signout-modal-toggle" class="hidden peer" />
+  <nav class="bg-white shadow px-4 py-3 flex justify-between items-center">
+    <div class="md:ml-64 relative top-2">
+      <button id="openSidebar" class="md:hidden mb-4">
+        <svg class="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
-    <nav class="space-y-2 px-4 text-center">
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <i class="fas fa-home"></i> Dashboard
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <i class="fas fa-calendar-check"></i> Attendance
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <i class="fas fa-file-alt"></i> Leaves
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <i class="fas fa-money-check-alt"></i> Fees
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <i class="fas fa-exclamation-circle"></i> Fines
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <i class="fas fa-bell"></i> Notifications
-      </a>
-      <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
-        <i class="fas fa-user-plus"></i> Add Student
-      </a>
-    </nav>
-  </aside>
+    <div class="relative">
+      <input type="checkbox" id="dropdown-toggle" class="peer hidden">
+      <label for="dropdown-toggle"
+        class="flex items-center gap-2 cursor-pointer bg-blue-100 text-sm rounded-full px-3 py-1.5 hover:bg-blue-200">
+        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 10a4 4 0 100-8 4 4 0 000 8zM2 18a8 8 0 0116 0H2z" />
+        </svg>
+        <span class="text-gray-700 font-semibold">User</span>
+        <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </label>
+      <div
+        class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20 border border-gray-100 hidden peer-checked:block">
+        <a href="./user-profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Your Profile</a>
+        <a href="./forgot-password.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Change Password</a>
+        <label for="signout-modal-toggle"
+          class="px-3 py-2 text-red-600 hover:bg-gray-100 flex items-center gap-1 cursor-pointer">
+          <svg class="w-6 h-6 " fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Sign out
+        </label>
+      </div>
+    </div>
+  </nav>
+  <aside id="sidebar"
+        class="fixed z-40 top-0 left-0 w-64 xl:w-80 md:w-64 h-full bg-gradient-to-b from-blue-700 to-blue-800 shadow-md text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+        <div class="flex items-center justify-between p-4 md:justify-center">
+          <h1 class="text-xl font-bold">AMS</h1>
+          <button id="closeSidebar" class="md:hidden">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <nav class="space-y-2 px-4 text-center">
+          <a href="./dashboard.html" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M3 10l9-7 9 7v8a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4H9v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Dashboard
+          </a>
+          <div class="relative">
+            <button onclick="toggleDropdown('attendanceDropdown')"
+              class="flex items-center justify-between w-full gap-3 p-3 rounded-lg hover:bg-blue-500">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path
+                    d="M8 7V3m8 4V3m-9 8h10m-12 8h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Attendance
+              </div>
+              <svg class="w-4 h-4 transition-transform" id="attendanceIcon" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" stroke-width="2">
+                <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div id="attendanceDropdown" class="hidden flex-col mt-2 bg-blue-800">
+              <a href="./mark-attendence.html" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Mark
+                Attendance</a>
+              <a href="./attendance-record.html" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Attendance
+                Record</a>
+            </div>
+          </div>
+          <div class="relative">
+            <button onclick="toggleDropdown('leavesDropdown')"
+              class="flex items-center justify-between w-full gap-3 p-3 rounded-lg hover:bg-blue-500">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path
+                    d="M9 5h6a2 2 0 0 1 2 2v0a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2v0a2 2 0 0 1 2-2z"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M9 14h6m-6-4h6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Leaves
+              </div>
+              <svg class="w-4 h-4 transition-transform" id="leavesIcon" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" stroke-width="2">
+                <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div id="leavesDropdown" class="hidden flex-col mt-2 bg-blue-800">
+              <a href="#" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Apply for
+                Leave</a>
+              <a href="#" class="block p-2 text-sm text-white hover:bg-blue-500 rounded w-full text-start">Leave
+                Record</a>
+            </div>
+          </div>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M2 7h20M2 10h20M4 17h4m6 0h6a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Fees
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path
+                d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Fines
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path
+                d="M15 17h5l-1.41-1.41A2 2 0 0 1 18 14.16V11a6 6 0 0 0-5-5.92V4a2 2 0 1 0-4 0v1.08A6 6 0 0 0 4 11v3.16c0 .54-.22 1.06-.59 1.44L2 17h5m5 0v1a3 3 0 1 1-6 0v-1h6z"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Notifications
+          </a>
+          <a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-500 focus:bg-blue-700">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+              <path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Add Student
+          </a>
+        </nav>
+      </aside>
   <div class="md:ml-64 xl:ml-80 p-4">
     <div class="max-w-6xl mx-auto">
       <h1 class="text-2xl font-bold mb-6">Fees Management</h1>
@@ -165,141 +262,9 @@
     </div>
   </div>
 </body>
+<script src="./assets/js/dashboard.js"></script>
 </html>
 
 
  
-    <!-- <div class="max-w-4xl mx-auto">
-        <h1 class="text-2xl font-bold mb-6">Fees Management</h1>
-        <div class="bg-white shadow-md rounded-lg mb-6">
-            <div class="bg-gray-200 flex items-center p-2 rounded">
-                <div class="bg-yellow-400 text-white p-2 rounded">
-                    <i class="fa fa-exclamation-triangle"></i>
-                </div>
-                <h2 class="text-xl font-semibold p-4 border-b">Pending Fees</h2>
-            </div>
-            <div class="p-4">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="border-b text-md">
-                            <td class="py-2">Fee Name</td>
-                            <td class="py-2">AMOUNT</td>
-                            <td class="py-2">DUE DATE</td>
-                            <td class="py-2">STATUS</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b">
-                            <td class="py-2">Tuition Fee - November 2023</td>
-                            <td class="py-2 text-neutral-500">$100</td>
-                            <td class="py-2 text-neutral-500">2023-11-15</td>
-                            
-                            <td class="py-2">
-                                <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded-lg">
-                                    <i class="fas fa-check-circle"></i> Pending
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2">Library Fee - Annual</td>
-                            <td class="py-2 text-neutral-500">$50</td>
-                            <td class="py-2 text-neutral-500">2023-11-30</td>
-                            
-                            <td class="py-2">
-                                <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded-lg">
-                                    <i class="fas fa-check-circle"></i> Pending
-                                </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-xl bg-white rounded-lg font-semibold p-4 border-b">Payment History</h2>
-            <div class="bg-white shadow-md rounded-lg mb-6">
-                
-                <div class="p-4">
-                    <table class="w-full text-left">
-                        <thead>
-                            <tr class="border-b text-md">
-                                <td class="py-2">Fee Name</td>
-                                <td class="py-2">AMOUNT</td>
-                                <td class="py-2">DATE</td>
-                                <td class="py-2">STATUS</td>
-                                <td class="py-2">REFERENCE</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b">
-                                <td class="py-2">Tuition Fee - October 2023</td>
-                                <td class="py-2 text-neutral-500">$100</td>
-                                <td class="py-2 text-neutral-500">2023-10-05</td>
-                                <td class="py-2">
-                                    <span class="bg-green-100 text-green-700 px-2 py-1 rounded-lg">
-                                        <i class="fas fa-check-circle"></i> Paid
-                                    </span>
-                                </td>
-                                <td class="py-2 text-neutral-500">TXN123456</td>
-                            <tr class="border-b">
-                                <td class="py-2">Tuition Fee - September 2023</td>
-                                <td class="py-2 text-neutral-500">$100</td>
-                                <td class="py-2 text-neutral-500">2023-09-03</td>
-                                <td class="py-2">
-                                    <span class="bg-green-100 text-green-700 px-2 py-1 rounded-lg">
-                                        <i class="fas fa-check-circle"></i> Paid
-                                    </span>
-                                </td>
-                                <td class="py-2 text-neutral-500">TXN123455</td>
-                            </tr>
-
-                            </tr>
-                            <tr class="border-b">
-                                <td class="py-2">Tuition Fee - October 2023</td>
-                                <td class="py-2 text-neutral-500">$100</td>
-                                <td class="py-2 text-neutral-500">2023-10-05</td>
-                                <td class="py-2">
-                                    <span class="bg-green-100 text-green-700 px-2 py-1 rounded-lg">
-                                        <i class="fas fa-check-circle"></i> Paid
-                                    </span>
-                                </td>
-                                <td class="py-2 text-neutral-500">TXN123456</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="bg-white shadow-md rounded-lg mb-6">
-                <h2 class="text-xl font-semibold p-4 border-b">Fees Summary</h2>
-                <div class="bg-white rounded-xl shadow p-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
-                            <div class="bg-blue-500 text-white p-2 rounded">
-                                <i class="fa fa-credit-card text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600">Total Fees (Annual)</p>
-                                <p class="text-lg font-semibold">Rs. 000,000</p>
-                            </div>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg flex items-center gap-4">
-                            <div class="bg-green-500 text-white p-2 rounded">
-                                <i class="fa fa-check-circle text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600">Total Paid</p>
-                                <p class="text-lg font-semibold">Rs. 000,000</p>
-                            </div>
-                        </div>
-                        <div class="bg-yellow-50 p-4 rounded-lg flex items-center gap-4">
-                            <div class="bg-yellow-400 text-white p-2 rounded">
-                                <i class="fa fa-exclamation-triangle"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600">Pending Amount</p>
-                                <p class="text-lg font-semibold">Rs.000,000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+   
