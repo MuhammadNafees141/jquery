@@ -57,7 +57,6 @@
       </div>
     </div>
   </div>
-  
   <div class="grid grid-cols-1 md:grid-cols-12">
     <div class="md:block md:col-span-4 lg:col-span-3">
       <aside id="sidebar"
@@ -179,12 +178,48 @@
               class="flex-shrink-0 border rounded p-2 text-gray-700">
           </form>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 bg-gray-100 p-4">
+          <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+            <div>
+              <h2 class="text-gray-600 text-sm font-semibold">Presents</h2>
+              <p class="text-2xl font-bold text-gray-900 mt-2">18</p>
+            </div>
+            <div class="flex items-center justify-center w-12 h-12 bg-green-100 rounded-full">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+            <div>
+              <h2 class="text-gray-600 text-sm font-semibold">Absents</h2>
+              <p class="text-2xl font-bold text-gray-900 mt-2">2</p>
+            </div>
+            <div class="flex items-center justify-center w-12 h-12 bg-red-100 rounded-full">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+            <div>
+              <h2 class="text-gray-600 text-sm font-semibold">Late</h2>
+              <p class="text-2xl font-bold text-gray-900 mt-2">2</p>
+            </div>
+            <div class="flex items-center justify-center w-12 h-12 bg-yellow-100 rounded-full">
+              <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
         <div class="max-h-96 overflow-auto">
           <div class="overflow-x-auto">
             <table class="min-w-full bg-white rounded-xl shadow-lg border border-gray-300 overflow-auto text-center">
               <thead>
                 <tr class="bg-gray-300 text-gray-700 text-sm border-b border-gray-300">
-                  <th class="py-3 px-4 text-center border-r border-gray-300">Date</th>
+                  <th class="py-3 px-4 text-center border-r border-gray-300 sticky bg-gray-300 left-0">Date</th>
                   <th class="py-3 px-4 text-center border-r border-gray-300">Day</th>
                   <th class="py-3 px-4 text-center border-r border-gray-300">Status</th>
                   <th class="py-3 px-4 text-center border-r border-gray-300">Time In</th>
@@ -194,7 +229,7 @@
               </thead>
               <tbody class="text-gray-600 text-sm">
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2025-05-01</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Monday</td>
                   <td class="py-3 px-4">
                     <span
@@ -206,7 +241,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-03</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Wednesday</td>
                   <td class="py-3 px-4">
                     <span
@@ -224,7 +259,7 @@
                   <td class="py-3 px-4">8h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Thursday</td>
                   <td class="py-3 px-4">
                     <span
@@ -242,7 +277,8 @@
                 </tr>
   
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
+                  
                   <td class="py-3 px-4">Friday</td>
                   <td class="py-3 px-4">
                     <span
@@ -259,7 +295,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-05</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Saturday</td>
                   <td class="py-3 px-4">
                     <span
@@ -276,7 +312,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-02</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Sunday</td>
                   <td class="py-3 px-4">
                     <span
@@ -288,7 +324,7 @@
                   <td class="py-3 px-4">8h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2025-05-01</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Monday</td>
                   <td class="py-3 px-4">
                     <span
@@ -300,7 +336,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-03</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Wednesday</td>
                   <td class="py-3 px-4">
                     <span
@@ -318,7 +354,7 @@
                   <td class="py-3 px-4">8h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Thursday</td>
                   <td class="py-3 px-4">
                     <span
@@ -336,7 +372,8 @@
                 </tr>
   
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
+                  
                   <td class="py-3 px-4">Friday</td>
                   <td class="py-3 px-4">
                     <span
@@ -353,7 +390,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-05</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Saturday</td>
                   <td class="py-3 px-4">
                     <span
@@ -370,7 +407,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-02</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Sunday</td>
                   <td class="py-3 px-4">
                     <span
@@ -382,7 +419,7 @@
                   <td class="py-3 px-4">8h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2025-05-01</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Monday</td>
                   <td class="py-3 px-4">
                     <span
@@ -394,7 +431,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-03</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Wednesday</td>
                   <td class="py-3 px-4">
                     <span
@@ -412,7 +449,7 @@
                   <td class="py-3 px-4">8h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Thursday</td>
                   <td class="py-3 px-4">
                     <span
@@ -430,7 +467,7 @@
                 </tr>
   
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Friday</td>
                   <td class="py-3 px-4">
                     <span
@@ -447,7 +484,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-05</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Saturday</td>
                   <td class="py-3 px-4">
                     <span
@@ -464,7 +501,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-02</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Sunday</td>
                   <td class="py-3 px-4">
                     <span
@@ -476,7 +513,7 @@
                   <td class="py-3 px-4">8h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2025-05-01</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Monday</td>
                   <td class="py-3 px-4">
                     <span
@@ -488,7 +525,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-03</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Wednesday</td>
                   <td class="py-3 px-4">
                     <span
@@ -506,7 +543,7 @@
                   <td class="py-3 px-4">8h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Thursday</td>
                   <td class="py-3 px-4">
                     <span
@@ -524,7 +561,7 @@
                 </tr>
   
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-04</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Friday</td>
                   <td class="py-3 px-4">
                     <span
@@ -541,7 +578,7 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-05</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Saturday</td>
                   <td class="py-3 px-4">
                     <span
@@ -558,12 +595,11 @@
                   <td class="py-3 px-4">0h</td>
                 </tr>
                 <tr class="border-b border-gray-200">
-                  <td class="py-3 px-4 font-semibold">2023-10-02</td>
+                  <td class="py-3 px-4 font-semibold sticky left-0 bg-white z-10">2025-05-01</td>
                   <td class="py-3 px-4">Sunday</td>
                   <td class="py-3 px-4">
                     <span
                       class="inline-flex items-center bg-gray-200 text-gray-700 text-xs font-medium px-2 py-1 rounded-full">Off</span>
-  
                   </td>
                   <td class="py-3 px-4">09:00 AM</td>
                   <td class="py-3 px-4">05:00 PM</td>
@@ -573,53 +609,7 @@
             </table>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
       </main>
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 bg-gray-100 p-4">
-        <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
-          <div>
-            <h2 class="text-gray-600 text-sm font-semibold">Presents</h2>
-            <p class="text-2xl font-bold text-gray-900 mt-2">18</p>
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-green-100 rounded-full">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
-          <div>
-            <h2 class="text-gray-600 text-sm font-semibold">Absents</h2>
-            <p class="text-2xl font-bold text-gray-900 mt-2">2</p>
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-red-100 rounded-full">
-            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 flex justify-between items-center">
-          <div>
-            <h2 class="text-gray-600 text-sm font-semibold">Late</h2>
-            <p class="text-2xl font-bold text-gray-900 mt-2">2</p>
-          </div>
-          <div class="flex items-center justify-center w-12 h-12 bg-yellow-100 rounded-full">
-            <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
-              <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </body>
