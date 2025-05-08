@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -168,13 +168,48 @@
             Student ID: AMS-2023-001
           </span>
         </div>
-        <div class="max-w-4xl bg-white shadow rounded-lg p-6">
+        <div class="max-w-4xl bg-white  shadow rounded-lg p-6">
+          <div class="max-w-4xl mx-auto bg-white shadow rounded-lg">
+            <h2 class="text-xl font-semibold p-4 border-b">Fees Summary</h2>
+            <div class="p-4">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-red-50 p-4 rounded-lg flex items-center gap-4">
+                  <div class="bg-red-500 text-white p-2 rounded">
+                    <i class="fa fa-exclamation-triangle"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-600">Total Pending Fines</p>
+                    <p class="text-lg font-semibold">Rs. 000,000</p>
+                  </div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg flex items-center gap-4">
+                  <div class="bg-green-500 text-white p-2 rounded">
+                    <i class="fa fa-check-circle text-xl"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-600">Total Paid Fines</p>
+                    <p class="text-lg font-semibold">Rs. 000,000</p>
+                  </div>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
+                  <div class="bg-blue-500 text-white p-2 rounded">
+                    <i class="fa fa-credit-card text-xl"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-600">All Time Total</p>
+                    <p class="text-lg font-semibold">Rs.000,000</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
           <div class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded mb-4 flex items-center gap-2">
             <i class="fa fa-exclamation-triangle text-red-600"></i>
             <span class="font-semibold">Pending Fines</span>
           </div>
           <div class="max-h-96 overflow-auto">
-            <div class="space-y-4 ">
+            <div class="space-y-4">
               <div class="bg-white border rounded-lg p-4 shadow-sm flex justify-between items-start">
                 <div>
                   <h2 class="text-lg font-semibold text-gray-800">Late Fee Submission</h2>
@@ -240,41 +275,6 @@
                 </div>
                 <div class="text-right pt-5">
                   <p class="text-lg font-semibold text-gray-800">Rs. 000</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-1">
-            <h2 class="text-xl font-semibold p-4 border-b">Fees Summary</h2>
-            <div class="bg-white rounded-xl shadow p-4">
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="bg-red-50 p-4 rounded-lg flex items-center gap-4">
-                  <div class="bg-red-500 text-white p-2 rounded">
-                    <i class="fa fa-exclamation-triangle"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-gray-600">Total Pending Fines</p>
-                    <p class="text-lg font-semibold">Rs. 000,000</p>
-                  </div>
-                </div>
-                <div class="bg-green-50 p-4 rounded-lg flex items-center gap-4">
-                  <div class="bg-green-500 text-white p-2 rounded">
-                    <i class="fa fa-check-circle text-xl"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-gray-600">Total Paid Fines</p>
-                    <p class="text-lg font-semibold">Rs. 000,000</p>
-                  </div>
-                </div>
-                <div class="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
-                  <div class="bg-blue-500 text-white p-2 rounded">
-                    <i class="fa fa-credit-card text-xl"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-gray-600">All Time Total</p>
-                    <p class="text-lg font-semibold">Rs.000,000</p>
-                  </div>
                 </div>
               </div>
             </div>

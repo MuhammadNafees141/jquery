@@ -144,14 +144,48 @@
     <div class="max-w-6xl mx-auto">
       <h1 class="text-2xl font-bold mb-6">Fees Management</h1>
       <div class="bg-white shadow-md rounded-lg mb-6">
+        <h2 class="text-xl font-semibold p-4 border-b">Fees Summary</h2>
+        <div class="bg-white rounded-xl shadow p-4">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
+              <div class="bg-blue-500 text-white p-2 rounded">
+                <i class="fa fa-credit-card text-xl"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Total Fees (Annual)</p>
+                <p class="text-lg font-semibold">Rs. 000,000</p>
+              </div>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg flex items-center gap-4">
+              <div class="bg-green-500 text-white p-2 rounded">
+                <i class="fa fa-check-circle text-xl"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Total Paid</p>
+                <p class="text-lg font-semibold">Rs. 000,000</p>
+              </div>
+            </div>
+            <div class="bg-yellow-50 p-4 rounded-lg flex items-center gap-4">
+              <div class="bg-yellow-400 text-white p-2 rounded">
+                <i class="fa fa-exclamation-triangle"></i>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Pending Amount</p>
+                <p class="text-lg font-semibold">Rs. 000,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white shadow-md rounded-lg mb-6">
         <div class="bg-gray-200 flex items-center p-2 rounded">
           <div class="bg-yellow-400 text-white p-2 rounded">
             <i class="fa fa-exclamation-triangle"></i>
           </div>
           <h2 class="text-xl font-semibold p-4 border-b">Pending Fees</h2>
         </div>
-        <div class="p-4 overflow-auto">
-          <table class="min-w-full text-left">
+        <div class="p-4 overflow-auto max-h-96">
+          <table class="min-w-full text-left overflow-y-auto">
             <thead>
               <tr class="border-b text-md">
                 <td class="py-2">Fee Name</td>
@@ -185,10 +219,11 @@
           </table>
         </div>
       </div>
+      <div class="">
       <div class="bg-white shadow-md rounded-lg mb-6">
         <h2 class="text-xl bg-white rounded-lg font-semibold p-4 border-b">Payment History</h2>
-        <div class="p-4 overflow-auto">
-          <table class="min-w-full text-left">
+        <div class="p-4 overflow-auto max-h-96">
+          <table class="min-w-full overflow-y-auto text-left">
             <thead>
               <tr class="border-b text-md">
                 <td class="py-2">Fee Name</td>
@@ -225,40 +260,7 @@
           </table>
         </div>
       </div>
-      <div class="bg-white shadow-md rounded-lg mb-6">
-        <h2 class="text-xl font-semibold p-4 border-b">Fees Summary</h2>
-        <div class="bg-white rounded-xl shadow p-4">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="bg-blue-50 p-4 rounded-lg flex items-center gap-4">
-              <div class="bg-blue-500 text-white p-2 rounded">
-                <i class="fa fa-credit-card text-xl"></i>
-              </div>
-              <div>
-                <p class="text-sm text-gray-600">Total Fees (Annual)</p>
-                <p class="text-lg font-semibold">Rs. 000,000</p>
-              </div>
-            </div>
-            <div class="bg-green-50 p-4 rounded-lg flex items-center gap-4">
-              <div class="bg-green-500 text-white p-2 rounded">
-                <i class="fa fa-check-circle text-xl"></i>
-              </div>
-              <div>
-                <p class="text-sm text-gray-600">Total Paid</p>
-                <p class="text-lg font-semibold">Rs. 000,000</p>
-              </div>
-            </div>
-            <div class="bg-yellow-50 p-4 rounded-lg flex items-center gap-4">
-              <div class="bg-yellow-400 text-white p-2 rounded">
-                <i class="fa fa-exclamation-triangle"></i>
-              </div>
-              <div>
-                <p class="text-sm text-gray-600">Pending Amount</p>
-                <p class="text-lg font-semibold">Rs. 000,000</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
     </div>
   </div>
 </body>
