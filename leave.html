@@ -185,7 +185,7 @@
                   <div>
                     <label for="checkOut" class="block text-sm font-medium text-gray-700">To Date</label>
                     <input type="date" id="checkOut" name="checkOut"
-                      class="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                      class="mt-2 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">    
                   </div>
                 </div>
                 <div class="mt-8">
@@ -198,9 +198,11 @@
                   <div>
                     <button type="button"
                       class="border bg-gray-300 p-2 px-5 rounded-lg mt-5 hover:bg-slate-400">Cancel</button>
-                    <button type="button"
-                      class="border bg-blue-600 text-white p-2 px-5 rounded-lg mt-5 hover:bg-blue-700">Submit
-                      Application</button>
+                      <button id="submitApplicationBtn" type="button"
+                      class="border bg-blue-600 text-white p-2 px-5 rounded-lg mt-5 hover:bg-blue-700">
+                      Submit Application
+                    </button>
+                    <div id="toast-container" class="fixed top-5 right-5 space-y-2 z-50"></div>
                   </div>
                 </div>
               </form>
@@ -212,5 +214,5 @@
   </div>
 </body>
 <script src="./assets/js/dashboard.js"></script>
-
+<script src="./assets/js/leave-toast.js"></script>
 </html>
