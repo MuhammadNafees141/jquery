@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form With Html & Tailwindcss</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+  <style>
+    body {
+      background-image: url('assets/images/jonas-svidras-bgoE05DFF9U-unsplash.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-black/60 backdrop-blur-md">
+
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-2xl shadow-2xl border border-white/20 w-full max-w-2xl">
+    <h1 class="text-4xl font-bold text-black text-center mb-6">Contact Form</h1>
+
+    <form id="myForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="text-black block mb-1">First Name:</label>
+        <input type="text" name="fname" placeholder="Enter Your First Name"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">Last Name:</label>
+        <input type="text" name="lname" placeholder="Enter Your Last Name"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">Mother's Name:</label>
+        <input type="text" name="mname" placeholder="Enter Your Mother Name"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-purple-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">Father's Name:</label>
+        <input type="text" name="Fname" placeholder="Enter Your Father Name"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-purple-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">Email:</label>
+        <input type="email" name="Ename" placeholder="Enter Your Email"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-green-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">CNIC:</label>
+        <input type="text" id="fillCNIC" name="Cname" placeholder="35202-1234567-8"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-green-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">Contact Number:</label>
+        <input type="number" id="phone" name="CNname" placeholder="Enter Your Contact Number"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">Date of Birth:</label>
+        <input type="date" name="dname" id="dob"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-yellow-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">Password</label>
+        <input id="password" name="pname" type="password" placeholder="Enter Your Password"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-red-400" />
+      </div>
+
+      <div>
+        <label class="text-black block mb-1">Confirm Password</label>
+        <input id="confirmpassword" name="CPname" type="password" placeholder="Enter Your Confirm Password"
+          class="w-full p-3 rounded-xl bg-white/20 text-black placeholder-black focus:outline-none focus:ring-2 focus:ring-red-400" />
+      </div>
+
+      <div class="md:col-span-2">
+        <button type="submit"
+          class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold text-lg hover:scale-105 transition-transform duration-200 shadow-lg">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="./assets/js/jquery.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./assets/js/jquery.validate.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+
+  <script>
+    $(document).ready(function () {
+//         $('#phone').on('input', function () {
+//     let input = $(this).val().replace(/[^0-9]/g, '');
+
+//     // Remove leading 0 if user types it
+//     if (input.startsWith('0')) {
+//         input = input.slice(1);
+//     }
+
+//     // Update the hidden field with full number
+//     if (input.length > 0) {
+//         $('#fullPhone').val('+92' + input);
+//     } else {
+//         $('#fullPhone').val('');
+//     }
+// });
+
+
+
+      $("#dob").datepicker();
+
+      $('#fillCNIC').on('input', function () {
+    let value = $(this).val().replace(/[^0-9]/g, '');
+
+    if (value.length > 13) {
+        value = value.substring(0, 13);
+    }
+    if (value.length >= 6 && value.length <= 12) {
+        value = value.replace(/^(\d{5})(\d+)/, '$1-$2');
+    } else if (value.length === 13) {
+        value = value.replace(/^(\d{5})(\d{7})(\d{1})$/, '$1-$2-$3');
+    }
+
+    $(this).val(value);
+});
+
+      $.validator.addMethod("pattern", function (value, element, param) {
+        return this.optional(element) || param.test(value);
+      }, "Invalid format.");
+
+      
+      $("#myForm").validate({
+        rules: {
+          fname: { required: true, minlength: 2 },
+          lname: { required: true, minlength: 2 },
+          mname: { required: true, minlength: 2 },
+          Fname: { required: true, minlength: 2 },
+          Ename: { required: true, email: true },
+          Cname: {
+            required: true,
+            pattern: /^[0-9]{5}-[0-9]{7}-[0-9]{1}$/
+          },
+          CNname: { required: true, minlength: 2 },
+          dname: { required: true },
+          pname: {
+            required: true,
+            minlength: 6,
+            pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/
+          },
+          CPname: {
+            required: true,
+            minlength: 6,
+            equalTo: "#password"
+          }
+        },
+        messages: {
+          fname: "Please enter your first name",
+          lname: "Please enter your last name",
+          mname: "Please enter your mother's name",
+          Fname: "Please enter your father's name",
+          Ename: {
+            required: "Please enter your email",
+            email: "Please enter a valid email address"
+          },
+          Cname: {
+            required: "Please enter your CNIC",
+            pattern: "Format must be: 35202-1234567-8"
+          },
+          CNname: "Please enter your contact number",
+          dname: "Please enter your date of birth",
+          pname: {
+            required: "Please enter a password",
+            minlength: "At least 6 characters",
+            pattern: "Must contain letters, numbers, and special characters"
+          },
+          CPname: {
+            required: "Please confirm password",
+            minlength: "At least 6 characters",
+            equalTo: "Passwords do not match"
+          }
+        },
+        errorClass: "text-red-500 text-sm mt-1",
+        validClass: "text-green-500",
+        highlight: function (element) {
+          $(element).addClass("border-red-500");
+        },
+        unhighlight: function (element) {
+          $(element).removeClass("border-red-500");
+        },
+        submitHandler: function (form) {
+          alert("Form is valid and ready to submit!");
+          form.submit();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
