@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voice to Text Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Bootstrap 4 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 40px;
+    }
+
+    .mic-btn {
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background-color: red;
+      color: white;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .mic-btn:hover {
+      background-color: #000;
+    }
+
+    .recording-indicator {
+      display: none;
+      font-weight: bold;
+      color: red;
+      font-size: 18px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .dot-flashing {
+      display: inline-block;
+      position: relative;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: red;
+      animation: dotFlashing 1s infinite linear alternate;
+      margin-left: 5px;
+    }
+
+    @keyframes dotFlashing {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="text-center mb-4"><img src="../assets/images/mic.png" alt="Mic" width="100" style="vertical-align: middle; margin-right: 10px;"> <br> jQuery Voice to Text Converter</h2>
+
+    <div class="form-group">
+      <label for="voiceText">Recognized Text</label>
+      <textarea id="voiceText" class="form-control" rows="5" placeholder="Your speech will appear here..."></textarea>
+    </div>
+
+    <div class="text-center mb-3">
+      <button id="startBtn" class="mic-btn"><i class="fas fa-play"></i> Start</button>
+      <button id="stopBtn" class="mic-btn btn-secondary"><i class="fas fa-stop"></i> Stop</button>
+      <button id="resetBtn" class="mic-btn btn-danger"><i class="fas fa-sync-alt"></i> Reset</button>
+    </div>
+
+    <div class="recording-indicator" id="recordingStatus">
+      🔴 Listening<span class="dot-flashing"></span><span class="dot-flashing"></span><span class="dot-flashing"></span>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      let recognition;
+      let recognizing = false;
+
+      if (!('webkitSpeechRecognition' in window)) {
+        alert("Your browser does not support Speech Recognition. Please use Google Chrome.");
+        return;
+      }
+
+      recognition = new webkitSpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = false;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = function () {
+        recognizing = true;
+        $('#recordingStatus').show();
+      };
+
+      recognition.onend = function () {
+        recognizing = false;
+        $('#recordingStatus').hide();
+      };
+
+      recognition.onresult = function (event) {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          transcript += event.results[i][0].transcript;
+        }
+        $('#voiceText').val(transcript);
+      };
+
+      $('#startBtn').click(function () {
+        if (!recognizing) {
+          recognition.start();
+        }
+      });
+
+      $('#stopBtn').click(function () {
+        if (recognizing) {
+          recognition.stop();
+        }
+      });
+
+      $('#resetBtn').click(function () {
+        $('#voiceText').val('');
+        $('#recordingStatus').hide();
+        if (recognizing) recognition.stop();
+      });
+    });
+  </script>
+</body>
+</html>

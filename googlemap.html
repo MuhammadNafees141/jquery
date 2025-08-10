@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us — Map (Leaflet + OSM)</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Optional: Leaflet Control Geocoder CSS (search box) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+  <style>
+    body { background:#f8f9fa; padding:24px; }
+    #map { width:100%; height: 420px; border-radius:8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .contact-info { background:white; padding:16px; border-radius:8px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .control-label { font-weight:600; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h3 class="mb-4">Contact Us</h3>
+
+  <div class="row">
+    <!-- Left: contact details -->
+    <div class="col-md-5 mb-3">
+      <div class="contact-info">
+        <h5>Our Office</h5>
+        <p id="officeAddress">123 Main Street, Karachi, Pakistan</p>
+        <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+        <p>Phone: +92 300 1234567</p>
+
+        <hr>
+
+        <div class="form-group">
+          <label class="control-label">Selected Address</label>
+          <input type="text" id="selectedAddress" class="form-control" readonly>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col">
+            <label class="control-label">Latitude</label>
+            <input type="text" id="lat" class="form-control" readonly>
+          </div>
+          <div class="form-group col">
+            <label class="control-label">Longitude</label>
+            <input type="text" id="lng" class="form-control" readonly>
+          </div>
+        </div>
+
+        <button id="locateBtn" class="btn btn-outline-primary btn-sm">Center to My Location</button>
+      </div>
+    </div>
+
+    <!-- Right: map -->
+    <div class="col-md-7">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Optional: Leaflet Control Geocoder (uses Nominatim open geocode) -->
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<script>
+  $(function() {
+    // Default coordinates (change to your office)
+    const defaultLat = 24.8607;   // Karachi lat
+    const defaultLng = 67.0011;   // Karachi lng
+    const defaultZoom = 14;
+
+    // Initialize map
+    const map = L.map('map').setView([defaultLat, defaultLng], defaultZoom);
+
+    // OpenStreetMap tiles (no API key required)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Draggable marker at default location
+    const marker = L.marker([defaultLat, defaultLng], { draggable: true }).addTo(map);
+    marker.bindPopup("Our Office").openPopup();
+
+    // Show initial values
+    $('#lat').val(defaultLat.toFixed(6));
+    $('#lng').val(defaultLng.toFixed(6));
+    $('#selectedAddress').val($('#officeAddress').text());
+
+    // Reverse geocode function using Nominatim (OpenStreetMap)
+    function reverseGeocode(lat, lng) {
+      const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+      // Nominatim requires a valid User-Agent (browser is fine). Keep requests reasonable.
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.display_name) {
+            $('#selectedAddress').val(data.display_name);
+          } else {
+            $('#selectedAddress').val(`${lat.toFixed(6)}, ${lng.toFixed(6)}`);
+          }
+        })
+        .catch(err => {
+          console.warn('Reverse geocode failed', err);
+          $('#selectedAddress').val(`${lat.toFixed(6)}, ${lng.toFixed(6)}`);
+        });
+    }
+
+    // When marker is dragged, update inputs and reverse geocode
+    marker.on('dragend', function(e) {
+      const pos = marker.getLatLng();
+      $('#lat').val(pos.lat.toFixed(6));
+      $('#lng').val(pos.lng.toFixed(6));
+      reverseGeocode(pos.lat, pos.lng);
+    });
+
+    // When map is clicked, move marker there
+    map.on('click', function(e) {
+      marker.setLatLng(e.latlng);
+      $('#lat').val(e.latlng.lat.toFixed(6));
+      $('#lng').val(e.latlng.lng.toFixed(6));
+      reverseGeocode(e.latlng.lat, e.latlng.lng);
+    });
+
+    // Add optional search control (geocoder) to the top-left
+    if (typeof L.Control.Geocoder !== 'undefined') {
+      const geocoder = L.Control.geocoder({
+        defaultMarkGeocode: false
+      }).addTo(map);
+
+      geocoder.on('markgeocode', function(e) {
+        const center = e.geocode.center;
+        marker.setLatLng(center);
+        map.setView(center, 16);
+        $('#lat').val(center.lat.toFixed(6));
+        $('#lng').val(center.lng.toFixed(6));
+        $('#selectedAddress').val(e.geocode.name);
+      });
+    }
+
+    // 'Center to My Location' button
+    $('#locateBtn').click(function() {
+      if (!navigator.geolocation) {
+        alert('Geolocation not supported by your browser');
+        return;
+      }
+      $('#locateBtn').prop('disabled', true).text('Locating...');
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        map.setView([lat, lng], 15);
+        marker.setLatLng([lat, lng]);
+        $('#lat').val(lat.toFixed(6));
+        $('#lng').val(lng.toFixed(6));
+        reverseGeocode(lat, lng);
+        $('#locateBtn').prop('disabled', false).text('Center to My Location');
+      }, function(err) {
+        alert('Unable to get location: ' + err.message);
+        $('#locateBtn').prop('disabled', false).text('Center to My Location');
+      });
+    });
+
+  });
+</script>
+</body>
+</html>
